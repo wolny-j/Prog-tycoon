@@ -13,6 +13,11 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        InputTestValues();
+    }
+
+    void InputTestValues()
+    {
         if (Input.GetKeyDown(KeyCode.S))
         {
             player.skill += 10;
@@ -27,11 +32,15 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            player.tiredness += 10;
+            player.energy += 10;
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
             player.knowdledge += 10;
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            player.AddGameHours(1);
         }
     }
 }

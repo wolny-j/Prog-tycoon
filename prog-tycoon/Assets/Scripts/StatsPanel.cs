@@ -7,19 +7,33 @@ public class StatsPanel : MonoBehaviour
 {
     PlayerManager playerManager;
     [SerializeField] Slider skillSlider, workExperienceSlider, wellbeingsSlider, tirednessSlider, knowdledge;
+    [SerializeField] Text date, time, money;
     void Start()
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
+        playerManager.player.time.hours = 6;
+        playerManager.player.energy = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateValues();
+    }
+
+    void UpdateValues()
+    {
         skillSlider.value = playerManager.player.skill;
         workExperienceSlider.value = playerManager.player.workExperience;
         wellbeingsSlider.value = playerManager.player.wellbeing;
-        tirednessSlider.value = playerManager.player.tiredness;
+        tirednessSlider.value = playerManager.player.energy;
         knowdledge.value = playerManager.player.knowdledge;
-
+        money.text = playerManager.player.money.ToString();
+        date.text = playerManager.player.date.ToString();
+        time.text = playerManager.player.time.hours.ToString() + ":" + playerManager.player.time.minutes.ToString();
+        if (playerManager.player.time.minutes == 0)
+        {
+            time.text = time.text + "0";
+        }
     }
 }
