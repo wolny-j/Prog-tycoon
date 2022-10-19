@@ -12,6 +12,36 @@ public class Player
     public float knowdledge { get; set; }
     public System.DateTime date { get; set; }
     public float money { get; set; }
+    public Job job { get; set; }
+    public enum Job
+    {
+        None,
+        McDonald,
+        PartTimeMcDonald,
+        JuniorProgrammer,
+        MidProgrammer,
+    }
+
+    public Player(string _name)
+    {
+        _name = name;
+        date = System.DateTime.Now.Date;
+        time.hours = 0;
+        time.minutes = 0;
+        money = 0;
+        job = Job.None;
+    }
+
+    public Player()
+    {
+        name = "null";
+        date = System.DateTime.Now.Date;
+        time.hours = 0;
+        time.minutes = 0;
+        money = 0;
+        job = Job.None;
+    }
+
     public struct GameTime
     {
         public int hours { get; set; }
@@ -47,23 +77,7 @@ public class Player
     public GameTime time;
 
 
-    public Player(string _name)
-    {
-        _name = name;
-        date = System.DateTime.Now.Date;
-        time.hours = 0;
-        time.minutes = 0;
-        money = 0;
-    }
 
-    public Player()
-    {
-        name = "null";
-        date = System.DateTime.Now.Date;
-        time.hours = 0;
-        time.minutes = 0;
-        money = 0;
-    }
 
 
 }

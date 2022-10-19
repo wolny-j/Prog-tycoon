@@ -3,58 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ActionsManager : MonoBehaviour
+public class GoSleepPanel : MonoBehaviour
 {
     PlayerManager playerManager;
+    PanelsManager panelsManager;
     [SerializeField] Slider hourSliderSleep;
     [SerializeField] Text sleepHourText;
-    [SerializeField] GameObject sleepPanel;
     int sleepHour;
     void Start()
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
+        panelsManager = GameObject.Find("GameManager").GetComponent<PanelsManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            WatchTutorial();
-        }
-        if (sleepPanel.activeSelf)
+        if (gameObject.activeSelf)
         {
             CheckHours();
         }
     }
-
-    public void WatchTutorial()
-    {
-        if (playerManager.player.energy > 15)
-        {
-            playerManager.player.skill += 1;
-            playerManager.player.energy -= 15;
-            playerManager.player.AddGameHours(2);
-            playerManager.player.SetGameMinutes(30);
-        }
-    }
-
-    public void OpenSleepPanel()
-    {
-        if (sleepPanel.activeSelf)
-        {
-            sleepPanel.SetActive(false);
-        }
-        else
-        {
-            sleepPanel.SetActive(true);
-            hourSliderSleep.value = 3;
-        }
-    }
-
     public void GoSleep()
     {
-        if (playerManager.player.time.hours > 20 || playerManager.player.time.hours < 12)
+        if (playerManager.player.time.hours > 20 || (playerManager.player.time.hours < 6))
         {
             if ((Mathf.Abs(sleepHour - playerManager.player.time.hours)) >= 7)
             {
@@ -72,7 +44,7 @@ public class ActionsManager : MonoBehaviour
             playerManager.player.SetGameHours(sleepHour, true);
 
             sleepHour = 0;
-            OpenSleepPanel();
+            panelsManager.OpenSleepPanel();
         }
     }
 

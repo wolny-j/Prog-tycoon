@@ -29,7 +29,7 @@ public class StatsPanel : MonoBehaviour
         tirednessSlider.value = playerManager.player.energy;
         knowdledge.value = playerManager.player.knowdledge;
         money.text = playerManager.player.money.ToString();
-        date.text = playerManager.player.date.ToString();
+        date.text = playerManager.player.date.ToString("dd/MM/yyyy");
         time.text = playerManager.player.time.hours.ToString() + ":" + playerManager.player.time.minutes.ToString();
         if (playerManager.player.time.minutes == 0)
         {
