@@ -6,14 +6,20 @@ using UnityEngine.UI;
 public class GoSleepPanel : MonoBehaviour
 {
     PlayerManager playerManager;
+    MakingAction makingAction;
     PanelsManager panelsManager;
     [SerializeField] Slider hourSliderSleep;
     [SerializeField] Text sleepHourText;
+
+    [SerializeField] GameObject actionPanel, actionAnimation;
+
+
     int sleepHour;
     void Start()
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
         panelsManager = GameObject.Find("GameManager").GetComponent<PanelsManager>();
+        makingAction = actionAnimation.GetComponent<MakingAction>();
     }
 
     // Update is called once per frame
@@ -31,6 +37,7 @@ public class GoSleepPanel : MonoBehaviour
             if ((Mathf.Abs(sleepHour - playerManager.player.time.hours)) >= 7)
             {
                 playerManager.player.energy = 100;
+                playerManager.player.wellbeing += 20;
             }
             else
             {
@@ -39,8 +46,10 @@ public class GoSleepPanel : MonoBehaviour
                 if (tempEnegry > playerManager.player.energy)
                 {
                     playerManager.player.energy = tempEnegry;
+                    playerManager.player.wellbeing += 10;
                 }
             }
+            makingAction.OpenClosePanel();
             playerManager.player.SetGameHours(sleepHour, true);
 
             sleepHour = 0;

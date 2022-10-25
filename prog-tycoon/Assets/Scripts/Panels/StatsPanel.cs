@@ -8,11 +8,14 @@ public class StatsPanel : MonoBehaviour
     PlayerManager playerManager;
     [SerializeField] Slider skillSlider, workExperienceSlider, wellbeingsSlider, tirednessSlider, knowdledge;
     [SerializeField] Text date, time, money;
+
+    int rentCounter;
     void Start()
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
         playerManager.player.time.hours = 6;
         playerManager.player.energy = 100;
+        playerManager.player.wellbeing = 100;
     }
 
     // Update is called once per frame
@@ -26,6 +29,10 @@ public class StatsPanel : MonoBehaviour
         skillSlider.value = playerManager.player.skill;
         workExperienceSlider.value = playerManager.player.workExperience;
         wellbeingsSlider.value = playerManager.player.wellbeing;
+        if (playerManager.player.wellbeing > 100)
+        {
+            playerManager.player.wellbeing = 100;
+        }
         tirednessSlider.value = playerManager.player.energy;
         knowdledge.value = playerManager.player.knowdledge;
         money.text = playerManager.player.money.ToString();
@@ -35,5 +42,10 @@ public class StatsPanel : MonoBehaviour
         {
             time.text = time.text + "0";
         }
+    }
+
+    void CountRent()
+    {
+        
     }
 }

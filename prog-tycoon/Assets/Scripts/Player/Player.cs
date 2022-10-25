@@ -59,7 +59,7 @@ public class Player
     public void SetGameHours(int h, bool isSleep)
     {
         time.hours = h;
-        if (isSleep)
+        if (isSleep && (time.hours <= 24 && time.hours > 6))
         {
             date = date.AddDays(1);
         }
