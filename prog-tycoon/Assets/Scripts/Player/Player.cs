@@ -13,6 +13,8 @@ public class Player
     public System.DateTime date { get; set; }
     public float money { get; set; }
     public Job job { get; set; }
+    public int rentCounter { get; set; }
+    public float hunger { get; set; }
     public enum Job
     {
         None,
@@ -50,19 +52,27 @@ public class Player
     public void AddGameHours(int h)
     {
         time.hours += h;
+        for (int i = 1; i <= h; i++)
+        {
+            hunger -= 4;
+        }
         if (time.hours >= 24)
         {
             time.hours = 0;
+            rentCounter++;
             date = date.AddDays(1);
+            CheckRentTime();
         }
     }
     public void SetGameHours(int h, bool isSleep)
     {
-        time.hours = h;
         if (isSleep && (time.hours <= 24 && time.hours > 6))
         {
+            rentCounter++;
             date = date.AddDays(1);
+            CheckRentTime();
         }
+        time.hours = h;
     }
     public void SetGameMinutes(int h)
     {
@@ -76,7 +86,14 @@ public class Player
 
     public GameTime time;
 
-
+    void CheckRentTime()
+    {
+        if (rentCounter == 7)
+        {
+            money -= 100;
+            rentCounter = 0;
+        }
+    }
 
 
 

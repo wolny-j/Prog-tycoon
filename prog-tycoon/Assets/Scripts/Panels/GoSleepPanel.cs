@@ -32,7 +32,7 @@ public class GoSleepPanel : MonoBehaviour
     }
     public void GoSleep()
     {
-        if (playerManager.player.time.hours > 20 || (playerManager.player.time.hours < 6))
+        if (playerManager.player.time.hours > 18 || (playerManager.player.time.hours < 6))
         {
             if ((Mathf.Abs(sleepHour - playerManager.player.time.hours)) >= 7)
             {
@@ -53,6 +53,8 @@ public class GoSleepPanel : MonoBehaviour
             playerManager.player.SetGameHours(sleepHour, true);
 
             sleepHour = 0;
+            playerManager.playerInventory.energyDrinkUsage = 0;
+            playerManager.player.hunger -= 20;
             panelsManager.OpenSleepPanel();
         }
     }

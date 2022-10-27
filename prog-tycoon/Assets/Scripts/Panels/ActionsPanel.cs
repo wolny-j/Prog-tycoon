@@ -27,11 +27,11 @@ public class ActionsPanel : MonoBehaviour
         }
         else if (playerManager.player.job == Player.Job.McDonald)
         {
-            SetDescription("Time: 8h, Reward: 80$/day, Cost: 65 energy, 20 wellbeing", "McDonald");
+            SetDescription("Time: 9h, Reward: 80$/day, Cost: 65 energy, 20 wellbeing", "McDonald");
         }
         else if (playerManager.player.job == Player.Job.PartTimeMcDonald)
         {
-            SetDescription("Time: 4h, Reward: 35$/day, Cost: 30 energy, 10 wellbeing", " Part time McDonald");
+            SetDescription("Time: 5h, Reward: 35$/day, Cost: 30 energy, 10 wellbeing", " Part time McDonald");
         }
         else if (playerManager.player.job == Player.Job.JuniorProgrammer)
         {
@@ -66,16 +66,16 @@ public class ActionsPanel : MonoBehaviour
             {
                 playerManager.player.skill += 2;
                 playerManager.player.energy -= 15;
-                playerManager.player.AddGameHours(2);
                 playerManager.player.SetGameMinutes(30);
+                playerManager.player.AddGameHours(2);
                 playerManager.player.wellbeing -= 5;
             }
             else if (playerManager.player.wellbeing >= 40 && playerManager.player.wellbeing < 70)
             {
                 playerManager.player.skill += 2;
                 playerManager.player.energy -= 25;
-                playerManager.player.AddGameHours(2);
                 playerManager.player.SetGameMinutes(30);
+                playerManager.player.AddGameHours(2);
                 playerManager.player.wellbeing -= 10;
             }
             else if (playerManager.player.wellbeing < 40)
@@ -96,8 +96,8 @@ public class ActionsPanel : MonoBehaviour
             panelsManager.OpenActionsPanel();
             makingAction.OpenClosePanel();
             playerManager.player.energy -= 10;
-            playerManager.player.AddGameHours(1);
             playerManager.player.SetGameMinutes(30);
+            playerManager.player.AddGameHours(1);
             playerManager.player.wellbeing += 5;
         }
     }
@@ -120,21 +120,21 @@ public class ActionsPanel : MonoBehaviour
                         playerManager.player.money += 80;
                         playerManager.player.energy -= 60;
                         playerManager.player.wellbeing -= 15;
-                        playerManager.player.AddGameHours(8);
+                        playerManager.player.AddGameHours(9);
                     }
                     else if (playerManager.player.wellbeing >= 40 && playerManager.player.wellbeing < 70)
                     {
                         playerManager.player.money += 80;
                         playerManager.player.energy -= 65;
                         playerManager.player.wellbeing -= 20;
-                        playerManager.player.AddGameHours(8);
+                        playerManager.player.AddGameHours(9);
                     }
                     else if (playerManager.player.wellbeing < 40)
                     {
                         playerManager.player.money += 80;
                         playerManager.player.energy -= 75;
                         playerManager.player.wellbeing -= 25;
-                        playerManager.player.AddGameHours(8);
+                        playerManager.player.AddGameHours(9);
                     }
 
 
@@ -154,21 +154,21 @@ public class ActionsPanel : MonoBehaviour
                         playerManager.player.money += 35;
                         playerManager.player.energy -= 25;
                         playerManager.player.wellbeing -= 10;
-                        playerManager.player.AddGameHours(4);
+                        playerManager.player.AddGameHours(5);
                     }
                     else if (playerManager.player.wellbeing >= 40 && playerManager.player.wellbeing < 70)
                     {
                         playerManager.player.money += 35;
                         playerManager.player.energy -= 30;
                         playerManager.player.wellbeing -= 15;
-                        playerManager.player.AddGameHours(4);
+                        playerManager.player.AddGameHours(5);
                     }
                     else if (playerManager.player.wellbeing < 40)
                     {
                         playerManager.player.money += 35;
                         playerManager.player.energy -= 40;
                         playerManager.player.wellbeing -= 20;
-                        playerManager.player.AddGameHours(4);
+                        playerManager.player.AddGameHours(5);
                     }
 
                 }

@@ -8,7 +8,7 @@ public class PanelsManager : MonoBehaviour
     PlayerManager playerManager;
     [SerializeField] Slider hourSliderSleep;
     [SerializeField] Text sleepHourText;
-    [SerializeField] GameObject sleepPanel, actionsPanel, findJobPanel;
+    [SerializeField] GameObject sleepPanel, actionsPanel, findJobPanel, shopPanel, inventoryPanel;
     int sleepHour;
     void Start()
     {
@@ -58,10 +58,26 @@ public class PanelsManager : MonoBehaviour
             findJobPanel.SetActive(true);
         }
     }
-
-
-
-
-
-
+    public void OpenShopPanel()
+    {
+        if (shopPanel.activeSelf)
+        {
+            shopPanel.SetActive(false);
+        }
+        else
+        {
+            shopPanel.SetActive(true);
+        }
+    }
+    public void OpenInventoryPanel()
+    {
+        if (inventoryPanel.activeSelf)
+        {
+            inventoryPanel.SetActive(false);
+        }
+        else
+        {
+            inventoryPanel.SetActive(true);
+        }
+    }
 }

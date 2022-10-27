@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public Player player = new Player();
+    public PlayerInventory playerInventory = new PlayerInventory();
     void Start()
     {
 
@@ -28,7 +29,7 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            player.wellbeing -= 10;
+            player.wellbeing += 10;
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
