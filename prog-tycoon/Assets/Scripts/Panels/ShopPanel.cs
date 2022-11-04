@@ -20,7 +20,7 @@ public class ShopPanel : MonoBehaviour
     {
         if (playerManager.player.money >= 8)
         {
-            playerManager.playerInventory.energyDrink++;
+            playerManager.player.energyDrink++;
             playerManager.player.money -= 8;
         }
     }
@@ -28,7 +28,7 @@ public class ShopPanel : MonoBehaviour
     {
         if (playerManager.player.money >= 7)
         {
-            playerManager.playerInventory.water++;
+            playerManager.player.water++;
             playerManager.player.money -= 7;
         }
     }

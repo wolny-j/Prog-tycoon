@@ -53,7 +53,7 @@ public class GoSleepPanel : MonoBehaviour
             playerManager.player.SetGameHours(sleepHour, true);
 
             sleepHour = 0;
-            playerManager.playerInventory.energyDrinkUsage = 0;
+            playerManager.player.energyDrinkUsage = 0;
             playerManager.player.hunger -= 20;
             panelsManager.OpenSleepPanel();
         }
