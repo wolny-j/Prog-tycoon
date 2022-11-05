@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerInventory : PlayerSkills
 {
-
     public int energyDrink { get; set; }
     public int energyDrinkUsage { get; set; }
     public int water { get; set; }

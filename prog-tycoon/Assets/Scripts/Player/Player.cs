@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player
+public class Player : PlayerInventory
 {
     public string name { get; set; }
-    public float skill { get; set; }
     public float workExperience { get; set; }
     public float wellbeing { get; set; }
     public float energy { get; set; }
-    public float knowdledge { get; set; }
     public System.DateTime date { get; set; }
     public float money { get; set; }
     public Job job { get; set; }

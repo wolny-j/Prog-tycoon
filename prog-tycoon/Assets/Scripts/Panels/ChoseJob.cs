@@ -27,14 +27,14 @@ public class ChoseJob : MonoBehaviour
     }
     public void ChoseJuniorProgrammer()
     {
-        if (playerManager.player.skill > 20)
+        if (playerManager.player.csharp > 20)
         {
             playerManager.player.job = Player.Job.JuniorProgrammer;
         }
     }
     public void ChoseMidProgrammer()
     {
-        if (playerManager.player.skill > 45 && playerManager.player.workExperience > 20 && playerManager.player.knowdledge > 10)
+        if (playerManager.player.csharp > 45 && playerManager.player.workExperience > 20)
         {
             playerManager.player.job = Player.Job.MidProgrammer;
         }

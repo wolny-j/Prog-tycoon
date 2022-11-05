@@ -9,7 +9,7 @@ public class ActionsPanel : MonoBehaviour
     MakingAction makingAction;
     PanelsManager panelsManager;
     [SerializeField] Text jobDesctiption, buttonText;
-    [SerializeField] GameObject actionAnimation;
+    [SerializeField] GameObject actionAnimation, watchTutorialPanel;
 
     void Start()
     {
@@ -57,36 +57,38 @@ public class ActionsPanel : MonoBehaviour
 
     public void WatchTutorial()
     {
-        if (playerManager.player.energy >= 25)
-        {
-            panelsManager.OpenActionsPanel();
-            makingAction.OpenClosePanel();
+        panelsManager.OpenTutorialPanel();
+        panelsManager.OpenActionsPanel();
+        // if (playerManager.player.energy >= 25)
+        // {
+        //     panelsManager.OpenActionsPanel();
+        //     makingAction.OpenClosePanel();
 
-            if (playerManager.player.wellbeing >= 70)
-            {
-                playerManager.player.skill += 2;
-                playerManager.player.energy -= 15;
-                playerManager.player.SetGameMinutes(30);
-                playerManager.player.AddGameHours(2);
-                playerManager.player.wellbeing -= 5;
-            }
-            else if (playerManager.player.wellbeing >= 40 && playerManager.player.wellbeing < 70)
-            {
-                playerManager.player.skill += 2;
-                playerManager.player.energy -= 25;
-                playerManager.player.SetGameMinutes(30);
-                playerManager.player.AddGameHours(2);
-                playerManager.player.wellbeing -= 10;
-            }
-            else if (playerManager.player.wellbeing < 40)
-            {
-                playerManager.player.skill += 1;
-                playerManager.player.energy -= 30;
-                playerManager.player.AddGameHours(3);
-                playerManager.player.wellbeing -= 10;
-            }
+        //     if (playerManager.player.wellbeing >= 70)
+        //     {
+        //         playerManager.player.csharp += 2;
+        //         playerManager.player.energy -= 15;
+        //         playerManager.player.SetGameMinutes(30);
+        //         playerManager.player.AddGameHours(2);
+        //         playerManager.player.wellbeing -= 5;
+        //     }
+        //     else if (playerManager.player.wellbeing >= 40 && playerManager.player.wellbeing < 70)
+        //     {
+        //         playerManager.player.csharp += 2;
+        //         playerManager.player.energy -= 25;
+        //         playerManager.player.SetGameMinutes(30);
+        //         playerManager.player.AddGameHours(2);
+        //         playerManager.player.wellbeing -= 10;
+        //     }
+        //     else if (playerManager.player.wellbeing < 40)
+        //     {
+        //         playerManager.player.csharp += 1;
+        //         playerManager.player.energy -= 30;
+        //         playerManager.player.AddGameHours(3);
+        //         playerManager.player.wellbeing -= 10;
+        //     }
 
-        }
+        // }
     }
 
     public void ReadBook()

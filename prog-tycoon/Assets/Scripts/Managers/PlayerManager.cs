@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public PlayerInventory player = new PlayerInventory();
+    public Player player = new Player();
     void Start()
     {
 
@@ -18,25 +18,18 @@ public class PlayerManager : MonoBehaviour
 
     void InputTestValues()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            player.skill += 10;
-        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            player.workExperience += 10;
+            player.csharp += 10;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            player.wellbeing += 10;
+            player.wellbeing -= 10;
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
             player.energy += 10;
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            player.knowdledge += 10;
         }
         if (Input.GetKeyDown(KeyCode.H))
         {

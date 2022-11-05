@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSkills : Player
+public class PlayerSkills
 {
 
     //Basic skills
     public float csharp { get; set; }
     public float python { get; set; }
     public float java { get; set; }
-    public float cpp { get; set; }
+    public float webdev { get; set; }
     public float javaScript { get; set; }
     public float databases { get; set; }
     public float graphics { get; set; }

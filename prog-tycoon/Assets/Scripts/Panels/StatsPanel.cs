@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StatsPanel : MonoBehaviour
 {
     PlayerManager playerManager;
-    [SerializeField] Slider skillSlider, workExperienceSlider, wellbeingsSlider, tirednessSlider, knowdledgeSlider, hungerSlider;
+    [SerializeField] Slider wellbeingsSlider, tirednessSlider, hungerSlider;
     [SerializeField] Text date, time, money, rentDue;
 
     void Start()
@@ -26,14 +26,11 @@ public class StatsPanel : MonoBehaviour
 
     void UpdateValues()
     {
-        skillSlider.value = playerManager.player.skill;
-        workExperienceSlider.value = playerManager.player.workExperience;
         wellbeingsSlider.value = playerManager.player.wellbeing;
         hungerSlider.value = playerManager.player.hunger;
         CheckWellbeingBoundries();
         CheckHungerBoundries();
         tirednessSlider.value = playerManager.player.energy;
-        knowdledgeSlider.value = playerManager.player.knowdledge;
         money.text = playerManager.player.money.ToString();
         date.text = playerManager.player.date.ToString("dd/MM/yyyy");
         time.text = playerManager.player.time.hours.ToString() + ":" + playerManager.player.time.minutes.ToString();
