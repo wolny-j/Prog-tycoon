@@ -35,5 +35,9 @@ public class PlayerManager : MonoBehaviour
         {
             player.AddGameHours(1);
         }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            player.HandleDate();
+        }
     }
 }

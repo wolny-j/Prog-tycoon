@@ -18,25 +18,27 @@ public class ChoseJob : MonoBehaviour
 
     public void ChoseMcDonald()
     {
-        playerManager.player.job = Player.Job.McDonald;
+        playerManager.player.recruitTime = 5;
+        playerManager.player.chosenJob = Player.Job.McDonald;
     }
 
     public void ChoseMcDonaldPartTime()
     {
-        playerManager.player.job = Player.Job.PartTimeMcDonald;
+        playerManager.player.recruitTime = 3;
+        playerManager.player.chosenJob = Player.Job.PartTimeMcDonald;
     }
     public void ChoseJuniorProgrammer()
     {
         if (playerManager.player.csharp > 20)
         {
-            playerManager.player.job = Player.Job.JuniorProgrammer;
+            playerManager.player.chosenJob = Player.Job.JuniorProgrammer;
         }
     }
     public void ChoseMidProgrammer()
     {
         if (playerManager.player.csharp > 45 && playerManager.player.workExperience > 20)
         {
-            playerManager.player.job = Player.Job.MidProgrammer;
+            playerManager.player.chosenJob = Player.Job.MidProgrammer;
         }
     }
 }

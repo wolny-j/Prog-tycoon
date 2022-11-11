@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSkills
+public class PlayerSkills : PlayerTime
 {
 
     //Basic skills

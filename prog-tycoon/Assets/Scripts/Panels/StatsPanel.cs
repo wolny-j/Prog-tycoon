@@ -7,7 +7,8 @@ public class StatsPanel : MonoBehaviour
 {
     PlayerManager playerManager;
     [SerializeField] Slider wellbeingsSlider, tirednessSlider, hungerSlider;
-    [SerializeField] Text date, time, money, rentDue;
+    [SerializeField] Text date, time, money, rentDue, day;
+    [SerializeField] GameObject youGotJob;
 
     void Start()
     {
@@ -32,14 +33,20 @@ public class StatsPanel : MonoBehaviour
         CheckHungerBoundries();
         tirednessSlider.value = playerManager.player.energy;
         money.text = playerManager.player.money.ToString();
-        date.text = playerManager.player.date.ToString("dd/MM/yyyy");
+        date.text = playerManager.player.GetDate();
+        day.text = playerManager.player.date.week.ToString();
         time.text = playerManager.player.time.hours.ToString() + ":" + playerManager.player.time.minutes.ToString();
         if (playerManager.player.time.minutes == 0)
         {
             time.text = time.text + "0";
         }
         rentDue.text = "Rent payment in: " + (7 - playerManager.player.rentCounter).ToString();
-
+        if (playerManager.player.recruitTime == 0)
+        {
+            youGotJob.SetActive(true);
+            playerManager.player.job = playerManager.player.chosenJob;
+            playerManager.player.recruitTime = -1;
+        }
     }
 
     void CheckWellbeingBoundries()
@@ -67,4 +74,6 @@ public class StatsPanel : MonoBehaviour
             playerManager.player.money -= 100;
         }
     }
+
+
 }
