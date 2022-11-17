@@ -16,6 +16,7 @@ public class Player : PlayerInventory
         money = 350;
         job = Job.None;
         recruitTime = -1;
+        isUniversity = false;
     }
 
     public Player()
@@ -31,13 +32,8 @@ public class Player : PlayerInventory
         money = 350;
         recruitTime = -1;
         job = Job.None;
+        isUniversity = false;
     }
-
-
-
-
-
-
 }
 
 

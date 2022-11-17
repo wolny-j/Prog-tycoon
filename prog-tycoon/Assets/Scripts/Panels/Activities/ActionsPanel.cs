@@ -48,7 +48,7 @@ public class ActionsPanel : MonoBehaviour
         if (playerManager.player.energy >= 10)
         {
             panelsManager.OpenActionsPanel();
-            makingAction.OpenClosePanel();
+            makingAction.OpenClosePanel(1);
             playerManager.player.energy -= 10;
             playerManager.player.SetGameMinutes(30);
             playerManager.player.AddGameHours(1);
@@ -61,7 +61,7 @@ public class ActionsPanel : MonoBehaviour
         if (playerManager.player.energy >= 35 && playerManager.player.money >= 25 && playerManager.player.time.hours >= 19)
         {
             panelsManager.OpenActionsPanel();
-            makingAction.OpenClosePanel();
+            makingAction.OpenClosePanel(4);
             playerManager.player.energy -= 35;
             playerManager.player.SetGameMinutes(0);
             playerManager.player.AddGameHours(4);
@@ -108,7 +108,7 @@ public class ActionsPanel : MonoBehaviour
             if (playerManager.player.time.hours < 10)
             {
                 panelsManager.OpenActionsPanel();
-                makingAction.OpenClosePanel();
+                makingAction.OpenClosePanel(9);
                 if (playerManager.player.energy >= 65)
                 {
                     playerManager.player.wasAtJob = true;
@@ -143,7 +143,7 @@ public class ActionsPanel : MonoBehaviour
             if (playerManager.player.time.hours < 14)
             {
                 panelsManager.OpenActionsPanel();
-                makingAction.OpenClosePanel();
+                makingAction.OpenClosePanel(5);
                 if (playerManager.player.energy >= 30)
                 {
                     playerManager.player.wasAtJob = true;
@@ -175,7 +175,7 @@ public class ActionsPanel : MonoBehaviour
         else if (playerManager.player.job == Player.Job.JuniorProgrammer)
         {
             panelsManager.OpenActionsPanel();
-            makingAction.OpenClosePanel();
+            makingAction.OpenClosePanel(8);
             if (playerManager.player.energy >= 55)
             {
                 playerManager.player.wasAtJob = true;
@@ -205,7 +205,7 @@ public class ActionsPanel : MonoBehaviour
         else if (playerManager.player.job == Player.Job.MidProgrammer)
         {
             panelsManager.OpenActionsPanel();
-            makingAction.OpenClosePanel();
+            makingAction.OpenClosePanel(8);
             if (playerManager.player.energy >= 65)
             {
                 playerManager.player.wasAtJob = true;

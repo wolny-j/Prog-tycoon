@@ -134,6 +134,5 @@ public class PlayerTime : PlayerStats
         {
             recruitTime--;
         }
-
     }
 }

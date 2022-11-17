@@ -18,7 +18,7 @@ public class ChoseJob : MonoBehaviour
 
     public void ChoseMcDonald()
     {
-        playerManager.player.recruitTime = 5;
+        playerManager.player.recruitTime = 0;
         playerManager.player.chosenJob = Player.Job.McDonald;
     }
 

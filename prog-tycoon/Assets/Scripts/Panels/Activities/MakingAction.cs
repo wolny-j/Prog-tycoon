@@ -13,6 +13,7 @@ public class MakingAction : MonoBehaviour
     int hour = 0;
     float minutes = 0;
     float fillTime;
+    float time = 3;
 
     void Start()
     {
@@ -24,12 +25,12 @@ public class MakingAction : MonoBehaviour
         if (isAnim)
         {
             timerSlider.value = Mathf.Lerp(timerSlider.minValue, timerSlider.maxValue, fillTime);
-            fillTime += 0.5f * Time.deltaTime;
-
+            fillTime += 0.5f * (0.1f / time) * Time.deltaTime;
+            Debug.Log(fillTime);
 
             if (timerSlider.value == timerSlider.maxValue)
             {
-                OpenClosePanel();
+                OpenClosePanel(1);
             }
         }
     }
@@ -37,9 +38,11 @@ public class MakingAction : MonoBehaviour
 
 
 
-    public void OpenClosePanel()
+    public void OpenClosePanel(float _time)
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
+        time = _time;
+
         if (!this.gameObject.activeSelf)
         {
             gameObject.SetActive(true);
@@ -56,5 +59,9 @@ public class MakingAction : MonoBehaviour
         }
     }
 
+    public void SpeedUp()
+    {
+        fillTime += 0.01f;
+    }
 
 }
