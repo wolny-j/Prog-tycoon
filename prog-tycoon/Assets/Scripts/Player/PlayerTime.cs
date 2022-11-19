@@ -6,36 +6,7 @@ public class PlayerTime : PlayerStats
 {
     public GameTime time;
     public GameCallendar date;
-    public enum Seasons
-    {
-        Spring,
-        Summer,
-        Autumn,
-        Winter,
-    }
-    public enum Week
-    {
-        Monday,
-        Tuesday,
-        Wenesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday,
-    }
-    public struct GameTime
-    {
-        public int hours { get; set; }
-        public int minutes { get; set; }
-    }
 
-    public struct GameCallendar
-    {
-        public int days;
-        public Week week;
-        public Seasons seasons;
-        public int years;
-    }
     public void AddGameHours(int h)
     {
         time.hours += h;
@@ -118,7 +89,7 @@ public class PlayerTime : PlayerStats
 
     public void CheckJob()
     {
-        if (!(date.week == Player.Week.Saturday || date.week == Player.Week.Sunday) && job != Player.Job.None)
+        if (!(date.week == Week.Saturday || date.week == Week.Sunday) && job != Job.None)
         {
             if (wasAtJob == false)
             {

@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script with a player that is used by other scripts
 public class PlayerManager : MonoBehaviour
 {
-    public Player player = new Player();
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    //Create player object
+    public Player player = new Player("Loerm Ipsum", 350f);
     void Update()
     {
         InputTestValues();
     }
 
+    //Just for gametesting DELETE LATER
     void InputTestValues()
     {
 

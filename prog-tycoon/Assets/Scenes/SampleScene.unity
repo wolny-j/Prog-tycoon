@@ -7520,8 +7520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3bb7b647bf51d459b3fcf7f271f4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
   timerSlider: {fileID: 0}
-  hourText: {fileID: 0}
 --- !u!114 &688416272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9769,8 +9769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3bb7b647bf51d459b3fcf7f271f4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
   timerSlider: {fileID: 0}
-  hourText: {fileID: 0}
 --- !u!114 &886728635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17588,8 +17588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3bb7b647bf51d459b3fcf7f271f4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
   timerSlider: {fileID: 0}
-  hourText: {fileID: 0}
 --- !u!114 &1691276005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19018,7 +19018,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hourSliderSleep: {fileID: 740179001}
-  sleepHourText: {fileID: 258847081}
   sleepPanel: {fileID: 614631294}
   actionsPanel: {fileID: 675955988}
   findJobPanel: {fileID: 1890716200}
@@ -19966,8 +19965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3bb7b647bf51d459b3fcf7f271f4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 1826545262}
   timerSlider: {fileID: 1772574466}
-  hourText: {fileID: 0}
 --- !u!1 &1959651972
 GameObject:
   m_ObjectHideFlags: 0

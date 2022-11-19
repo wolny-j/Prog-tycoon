@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script responsible for wathing tutorial activity
 public class WatchTutorial : MonoBehaviour
 {
     PlayerManager playerManager;
@@ -9,19 +10,15 @@ public class WatchTutorial : MonoBehaviour
     PanelsManager panelsManager;
     [SerializeField] GameObject actionAnimation;
 
+    //Set up everything when the panel is set to active
     void OnEnable()
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
         panelsManager = GameObject.Find("GameManager").GetComponent<PanelsManager>();
         makingAction = actionAnimation.GetComponent<MakingAction>();
     }
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-
+    //All these functions are used by the buttons for watching a certain video type
     public void WatchCSharp()
     {
         playerManager.player.csharp = Watch(playerManager.player.csharp, 2, 10, 25, 2, 30);
@@ -55,6 +52,7 @@ public class WatchTutorial : MonoBehaviour
         playerManager.player.graphics = Watch(playerManager.player.graphics, 2, 10, 30, 3, 30);
     }
 
+    //Perform action by given arguments
     float Watch(float temp, float skill, float wellbeing, float energy, int hour, int minute)
     {
         if (playerManager.player.energy >= energy)

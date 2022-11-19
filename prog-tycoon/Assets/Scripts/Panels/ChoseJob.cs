@@ -10,35 +10,29 @@ public class ChoseJob : MonoBehaviour
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void ChoseMcDonald()
     {
         playerManager.player.recruitTime = 0;
-        playerManager.player.chosenJob = Player.Job.McDonald;
+        playerManager.player.chosenJob = Job.McDonald;
     }
 
     public void ChoseMcDonaldPartTime()
     {
         playerManager.player.recruitTime = 3;
-        playerManager.player.chosenJob = Player.Job.PartTimeMcDonald;
+        playerManager.player.chosenJob = Job.PartTimeMcDonald;
     }
     public void ChoseJuniorProgrammer()
     {
         if (playerManager.player.csharp > 20)
         {
-            playerManager.player.chosenJob = Player.Job.JuniorProgrammer;
+            playerManager.player.chosenJob = Job.JuniorProgrammer;
         }
     }
     public void ChoseMidProgrammer()
     {
         if (playerManager.player.csharp > 45 && playerManager.player.workExperience > 20)
         {
-            playerManager.player.chosenJob = Player.Job.MidProgrammer;
+            playerManager.player.chosenJob = Job.MidProgrammer;
         }
     }
 }

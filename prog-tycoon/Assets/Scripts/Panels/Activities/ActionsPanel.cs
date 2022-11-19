@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Script responsible for action panel
 public class ActionsPanel : MonoBehaviour
 {
     PlayerManager playerManager;
@@ -11,11 +12,7 @@ public class ActionsPanel : MonoBehaviour
     [SerializeField] Text jobDesctiption, buttonText;
     [SerializeField] GameObject actionAnimation, watchTutorialPanel, absence1, absence2, absence3, lostJobPanel;
 
-    void Start()
-    {
-
-    }
-
+    //Setup everything each time the panel is set to active
     void OnEnable()
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
@@ -24,25 +21,23 @@ public class ActionsPanel : MonoBehaviour
         SetUpPanel();
 
     }
-    void Update()
-    {
 
-
-    }
-
+    //Set the description of the activity
     void SetDescription(string descriptionInfo, string buttonInfo)
     {
         jobDesctiption.text = descriptionInfo;
         buttonText.text = buttonInfo;
-
     }
 
+    //Function used by the button 
     public void WatchTutorial()
     {
         panelsManager.OpenTutorialPanel();
         panelsManager.OpenActionsPanel();
     }
 
+    //Functions used by the buttons to make actions
+    //TODO MAKE A SEPARATE FUNCTION FOR NORMAL ACTIVIETIES AS BELOW (SUCH AS WORK FUNCTION) 
     public void ReadBook()
     {
         if (playerManager.player.energy >= 10)
@@ -71,170 +66,56 @@ public class ActionsPanel : MonoBehaviour
     }
 
 
+    //Function that sets yp everything on the panel
     void SetUpPanel()
     {
         CheckAbsence();
-        if (playerManager.player.job == Player.Job.None)
+        switch (playerManager.player.job)
         {
-            SetDescription("", "Unavailable");
-        }
-        else if (playerManager.player.job == Player.Job.McDonald)
-        {
-            SetDescription("Time: 9h, Reward: 80$/day, Cost: 65 energy, 20 wellbeing", "McDonald");
-        }
-        else if (playerManager.player.job == Player.Job.PartTimeMcDonald)
-        {
-            SetDescription("Time: 5h, Reward: 35$/day, Cost: 30 energy, 10 wellbeing", " Part time McDonald");
-        }
-        else if (playerManager.player.job == Player.Job.JuniorProgrammer)
-        {
-            SetDescription("Time: 8h, Reward: 100$/day, Cost: 55 energy, 10 wellbeing", "Junior Programmer");
-        }
-        else if (playerManager.player.job == Player.Job.MidProgrammer)
-        {
-            SetDescription("Time: 8h, Reward: 150$/day, Cost: 65 energy, 7 wellbeing", "Mid programmer");
+            case Job.None:
+                SetDescription("", "Unavailable");
+                break;
+            case Job.McDonald:
+                SetDescription("Time: 9h, Reward: 80$/day, Cost: 65 energy, 20 wellbeing", "McDonald");
+                break;
+            case Job.PartTimeMcDonald:
+                SetDescription("Time: 5h, Reward: 35$/day, Cost: 30 energy, 10 wellbeing", " Part time McDonald");
+                break;
+            case Job.JuniorProgrammer:
+                SetDescription("Time: 8h, Reward: 100$/day, Cost: 55 energy, 10 wellbeing", "Junior Programmer");
+                break;
+            case Job.MidProgrammer:
+                SetDescription("Time: 8h, Reward: 150$/day, Cost: 65 energy, 7 wellbeing", "Mid programmer");
+                break;
+            default:
+                Debug.Log("Unknown job error");
+                break;
         }
     }
 
-    //TODO CHANGE TO FUNTION SAME AS WATCHING TUTORIALS
+    //Function used by the button for going to work
     public void Work()
     {
-        if (playerManager.player.job == Player.Job.None)
+        switch (playerManager.player.job)
         {
-
-        }
-        else if (playerManager.player.job == Player.Job.McDonald)
-        {
-            if (playerManager.player.time.hours < 10)
-            {
-                panelsManager.OpenActionsPanel();
-                makingAction.OpenClosePanel(9);
-                if (playerManager.player.energy >= 65)
-                {
-                    playerManager.player.wasAtJob = true;
-                    if (playerManager.player.wellbeing >= 70)
-                    {
-                        playerManager.player.money += 80;
-                        playerManager.player.energy -= 60;
-                        playerManager.player.wellbeing -= 15;
-                        playerManager.player.AddGameHours(9);
-                    }
-                    else if (playerManager.player.wellbeing >= 40 && playerManager.player.wellbeing < 70)
-                    {
-                        playerManager.player.money += 80;
-                        playerManager.player.energy -= 65;
-                        playerManager.player.wellbeing -= 20;
-                        playerManager.player.AddGameHours(9);
-                    }
-                    else if (playerManager.player.wellbeing < 40)
-                    {
-                        playerManager.player.money += 80;
-                        playerManager.player.energy -= 75;
-                        playerManager.player.wellbeing -= 25;
-                        playerManager.player.AddGameHours(9);
-                    }
-
-
-                }
-            }
-        }
-        else if (playerManager.player.job == Player.Job.PartTimeMcDonald)
-        {
-            if (playerManager.player.time.hours < 14)
-            {
-                panelsManager.OpenActionsPanel();
-                makingAction.OpenClosePanel(5);
-                if (playerManager.player.energy >= 30)
-                {
-                    playerManager.player.wasAtJob = true;
-                    if (playerManager.player.wellbeing >= 70)
-                    {
-                        playerManager.player.money += 35;
-                        playerManager.player.energy -= 25;
-                        playerManager.player.wellbeing -= 10;
-                        playerManager.player.AddGameHours(5);
-                    }
-                    else if (playerManager.player.wellbeing >= 40 && playerManager.player.wellbeing < 70)
-                    {
-                        playerManager.player.money += 35;
-                        playerManager.player.energy -= 30;
-                        playerManager.player.wellbeing -= 15;
-                        playerManager.player.AddGameHours(5);
-                    }
-                    else if (playerManager.player.wellbeing < 40)
-                    {
-                        playerManager.player.money += 35;
-                        playerManager.player.energy -= 40;
-                        playerManager.player.wellbeing -= 20;
-                        playerManager.player.AddGameHours(5);
-                    }
-
-                }
-            }
-        }
-        else if (playerManager.player.job == Player.Job.JuniorProgrammer)
-        {
-            panelsManager.OpenActionsPanel();
-            makingAction.OpenClosePanel(8);
-            if (playerManager.player.energy >= 55)
-            {
-                playerManager.player.wasAtJob = true;
-                if (playerManager.player.wellbeing >= 70)
-                {
-                    playerManager.player.money += 100;
-                    playerManager.player.energy -= 50;
-                    playerManager.player.wellbeing -= 10;
-                    playerManager.player.AddGameHours(8);
-                }
-                else if (playerManager.player.wellbeing >= 40 && playerManager.player.wellbeing < 70)
-                {
-                    playerManager.player.money += 100;
-                    playerManager.player.energy -= 55;
-                    playerManager.player.wellbeing -= 10;
-                    playerManager.player.AddGameHours(8);
-                }
-                else if (playerManager.player.wellbeing < 40)
-                {
-                    playerManager.player.money += 100;
-                    playerManager.player.energy -= 65;
-                    playerManager.player.wellbeing -= 15;
-                    playerManager.player.AddGameHours(8);
-                }
-            }
-        }
-        else if (playerManager.player.job == Player.Job.MidProgrammer)
-        {
-            panelsManager.OpenActionsPanel();
-            makingAction.OpenClosePanel(8);
-            if (playerManager.player.energy >= 65)
-            {
-                playerManager.player.wasAtJob = true;
-                if (playerManager.player.wellbeing >= 70)
-                {
-                    playerManager.player.money += 150;
-                    playerManager.player.energy -= 60;
-                    playerManager.player.wellbeing -= 7;
-                    playerManager.player.AddGameHours(8);
-                }
-                else if (playerManager.player.wellbeing >= 40 && playerManager.player.wellbeing < 70)
-                {
-                    playerManager.player.money += 150;
-                    playerManager.player.energy -= 60;
-                    playerManager.player.wellbeing -= 10;
-                    playerManager.player.AddGameHours(8);
-                }
-                else if (playerManager.player.wellbeing < 40)
-                {
-                    playerManager.player.money += 150;
-                    playerManager.player.energy -= 70;
-                    playerManager.player.wellbeing -= 10;
-                    playerManager.player.AddGameHours(8);
-                }
-
-            }
+            case Job.McDonald:
+                MakeWorkAction(10, 80, 20, 65, 9);
+                break;
+            case Job.PartTimeMcDonald:
+                MakeWorkAction(14, 35, 15, 30, 5);
+                break;
+            case Job.JuniorProgrammer:
+                MakeWorkAction(16, 120, 10, 55, 8);
+                break;
+            case Job.MidProgrammer:
+                MakeWorkAction(16, 170, 15, 65, 8);
+                break;
+            default:
+                break;
         }
     }
 
+    //Make a visualisation in panel about player work absence
     void CheckAbsence()
     {
         if (playerManager.player.jobAbsence == 0)
@@ -259,6 +140,42 @@ public class ActionsPanel : MonoBehaviour
         {
             gameObject.SetActive(false);
             lostJobPanel.SetActive(true);
+        }
+    }
+
+    //Perform work action by given arguments
+    void MakeWorkAction(int deadline, float money, float wellbeing, float energy, int time)
+    {
+        if (playerManager.player.time.hours < deadline)
+        {
+            panelsManager.OpenActionsPanel();
+            makingAction.OpenClosePanel(time);
+            if (playerManager.player.energy >= energy)
+            {
+                playerManager.player.wasAtJob = true;
+                if (playerManager.player.wellbeing >= 70)
+                {
+                    playerManager.player.money += money;
+                    playerManager.player.energy -= energy - 5;
+                    playerManager.player.wellbeing -= wellbeing - 5;
+                    playerManager.player.AddGameHours(time);
+                }
+                else if (playerManager.player.wellbeing >= 40 && playerManager.player.wellbeing < 70)
+                {
+                    playerManager.player.money += money;
+                    playerManager.player.energy -= energy;
+                    playerManager.player.wellbeing -= wellbeing;
+                    playerManager.player.AddGameHours(time);
+                }
+                else if (playerManager.player.wellbeing < 40)
+                {
+                    playerManager.player.money += money;
+                    playerManager.player.energy -= energy + 10;
+                    playerManager.player.wellbeing -= wellbeing + 5;
+                    playerManager.player.AddGameHours(time);
+                }
+
+            }
         }
     }
 }

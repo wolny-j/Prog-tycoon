@@ -8,7 +8,6 @@ public class PlayerStats
     public float workExperience { get; set; }
     public float wellbeing { get; set; }
     public float energy { get; set; }
-
     public float money { get; set; }
     public int rentCounter { get; set; }
     public float hunger { get; set; }
@@ -20,13 +19,6 @@ public class PlayerStats
     public bool isUniversity { get; set; }
     public int attendance { get; set; }
     public int examDue { get; set; }
-    public enum Job
-    {
-        None,
-        McDonald,
-        PartTimeMcDonald,
-        JuniorProgrammer,
-        MidProgrammer,
-    }
+    
 
 }

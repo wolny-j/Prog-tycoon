@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : PlayerInventory
 {
-    public Player(string _name)
+    public Player(string _name, float startingMoney)
     {
         _name = name;
         date.days = 1;
@@ -13,7 +13,7 @@ public class Player : PlayerInventory
         date.years = 2020;
         time.hours = 0;
         time.minutes = 0;
-        money = 350;
+        money = startingMoney;
         job = Job.None;
         recruitTime = -1;
         isUniversity = false;
