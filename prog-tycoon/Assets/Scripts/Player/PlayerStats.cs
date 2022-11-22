@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Subclass with all player statistics
 public class PlayerStats
 {
     public string name { get; set; }
@@ -19,6 +20,6 @@ public class PlayerStats
     public bool isUniversity { get; set; }
     public int attendance { get; set; }
     public int examDue { get; set; }
-    
+
 
 }

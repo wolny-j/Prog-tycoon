@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Code responisble for going sleep
 public class GoSleepPanel : MonoBehaviour
 {
     PlayerManager playerManager;
@@ -10,11 +11,9 @@ public class GoSleepPanel : MonoBehaviour
     PanelsManager panelsManager;
     [SerializeField] Slider hourSliderSleep;
     [SerializeField] Text sleepHourText;
-
     [SerializeField] GameObject actionPanel, actionAnimation;
-
-
     int sleepHour;
+
     void Start()
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
@@ -22,7 +21,7 @@ public class GoSleepPanel : MonoBehaviour
         makingAction = actionAnimation.GetComponent<MakingAction>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (gameObject.activeSelf)
@@ -30,6 +29,7 @@ public class GoSleepPanel : MonoBehaviour
             CheckHours();
         }
     }
+    //Used by the button, skips time to what player set. Give additional bonuses when the sleeping time is longer than 7(may be changed later during gametesting) 
     public void GoSleep()
     {
         if (playerManager.player.time.hours > 14 || (playerManager.player.time.hours < 6))
@@ -61,7 +61,7 @@ public class GoSleepPanel : MonoBehaviour
     }
 
 
-
+    //Checks what hour is checked and displays it on the panel 
     void CheckHours()
     {
         switch (hourSliderSleep.value)

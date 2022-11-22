@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//SubClass responsible for player inventory
 public class PlayerInventory : PlayerSkills
 {
     public int energyDrink { get; set; }
@@ -9,10 +10,4 @@ public class PlayerInventory : PlayerSkills
     public int water { get; set; }
 
 
-    public PlayerInventory()
-    {
-        energyDrink = 0;
-        energyDrinkUsage = 0;
-        water = 0;
-    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Subclass containing all player skills info
 public class PlayerSkills : PlayerTime
 {
 
@@ -23,8 +24,4 @@ public class PlayerSkills : PlayerTime
     public float haskel { get; set; }
     public float c { get; set; }
 
-    public PlayerSkills()
-    {
-
-    }
 }

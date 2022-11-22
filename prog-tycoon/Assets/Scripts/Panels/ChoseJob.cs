@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script responsible for a choosejob panel
 public class ChoseJob : MonoBehaviour
 {
-    PlayerManager playerManager;
-    void Start()
-    {
-        playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
-    }
+    [SerializeField] PlayerManager playerManager;
 
+    //Functions used by button in the panel, recruit time gives information how long player will have to wait to get the job
     public void ChoseMcDonald()
     {
-        playerManager.player.recruitTime = 0;
+        playerManager.player.recruitTime = 0;   //Temporary 0 for debuging process
         playerManager.player.chosenJob = Job.McDonald;
     }
 

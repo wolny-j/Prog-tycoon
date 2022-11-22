@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Player final class with constructors, inharitance used to keep the code clean and separate all the object into subcategories
 public class Player : PlayerInventory
 {
     public Player(string _name, float startingMoney)

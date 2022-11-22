@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Script responsible for displaying player's basic stats information
 public class StatsPanel : MonoBehaviour
 {
     PlayerManager playerManager;
@@ -10,6 +11,7 @@ public class StatsPanel : MonoBehaviour
     [SerializeField] Text date, time, money, rentDue, day;
     [SerializeField] GameObject youGotJob;
 
+    //Setup everything at the start of the game
     void Start()
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
@@ -19,12 +21,12 @@ public class StatsPanel : MonoBehaviour
         playerManager.player.hunger = 100;
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateValues();
     }
 
+    //Update all values on the main panel
     void UpdateValues()
     {
         wellbeingsSlider.value = playerManager.player.wellbeing;
@@ -49,6 +51,7 @@ public class StatsPanel : MonoBehaviour
         }
     }
 
+    //Check if the wellbeing and hubger value is not above 100
     void CheckWellbeingBoundries()
     {
         if (playerManager.player.wellbeing > 100)

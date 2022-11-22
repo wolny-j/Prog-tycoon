@@ -2,20 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script responsible for displaying the shop and buying items 
 public class ShopPanel : MonoBehaviour
 {
-    PlayerManager playerManager;
-    void Start()
-    {
-        playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
-    }
+    [SerializeField] PlayerManager playerManager;
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
-
+    //Functions used by the buttons to buy items from the shop panel
     public void BuyEnergyDrink()
     {
         if (playerManager.player.money >= 8)
@@ -32,7 +25,6 @@ public class ShopPanel : MonoBehaviour
             playerManager.player.money -= 7;
         }
     }
-
     public void OrderBurger()
     {
         if (playerManager.player.money >= 30)

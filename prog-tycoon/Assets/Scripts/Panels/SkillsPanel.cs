@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Script responsible for displaying player's skills information
 public class SkillsPanel : MonoBehaviour
 {
-    PlayerManager playerManager;
+    [SerializeField] PlayerManager playerManager;
 
     [Header("Basic Skills")]
     [SerializeField]
@@ -18,15 +19,16 @@ public class SkillsPanel : MonoBehaviour
     Slider assemblySlider;
     [SerializeField]
     Slider rustSlider, networkingSlider, machineLearningSlider, haskelSlider, cyberSecuritySlider, cSlider, workExperienceSlider;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+
     void OnEnable()
     {
-        playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
+        UpdateSkills();
+    }
 
+    //Function responsible for updating information of the all player skills called everytime when the skills panel is opened. 
+    void UpdateSkills()
+    {
         cSharpSlider.value = playerManager.player.csharp;
         pythonSlider.value = playerManager.player.python;
         javaSlider.value = playerManager.player.java;
@@ -46,9 +48,4 @@ public class SkillsPanel : MonoBehaviour
         workExperienceSlider.value = playerManager.player.workExperience;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

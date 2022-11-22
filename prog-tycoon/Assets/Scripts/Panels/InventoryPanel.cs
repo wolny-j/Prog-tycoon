@@ -3,28 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Script responsible for displaying player's inventory and using item from it 
 public class InventoryPanel : MonoBehaviour
 {
     PlayerManager playerManager;
     [SerializeField] Text energyDrink, water;
 
-
-    void Start()
-    {
-
-    }
-
     void OnEnable()
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
-        energyDrink.text = playerManager.player.energyDrink.ToString();
-        water.text = playerManager.player.water.ToString();
-    }
-    void Update()
-    {
-
+        UpdateItems();
     }
 
+    //Functions used by the buttons in the panel. 
     public void UseEnergyDrink()
     {
         if (playerManager.player.energyDrink > 0)
@@ -44,5 +35,12 @@ public class InventoryPanel : MonoBehaviour
             playerManager.player.water--;
             water.text = playerManager.player.water.ToString();
         }
+    }
+
+    //Update the infomration about number of the all items
+    void UpdateItems()
+    {
+        energyDrink.text = playerManager.player.energyDrink.ToString();
+        water.text = playerManager.player.water.ToString();
     }
 }

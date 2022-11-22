@@ -2236,6 +2236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb78a05f84807749ad8ad5c524ea2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 1826545262}
 --- !u!1 &191279302
 GameObject:
   m_ObjectHideFlags: 0
@@ -18563,6 +18564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49987a3868b15dc40a61fe2a9f749d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
   cSharpSlider: {fileID: 76624526}
   pythonSlider: {fileID: 1091917582}
   javaSlider: {fileID: 689055192}
@@ -19466,6 +19468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8cda0245d037741a08f11575b259b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 1826545262}
 --- !u!114 &1890716203
 MonoBehaviour:
   m_ObjectHideFlags: 0
