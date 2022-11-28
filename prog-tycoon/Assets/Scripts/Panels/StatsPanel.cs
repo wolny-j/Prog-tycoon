@@ -43,12 +43,7 @@ public class StatsPanel : MonoBehaviour
             time.text = time.text + "0";
         }
         rentDue.text = "Rent payment in: " + (7 - playerManager.player.rentCounter).ToString();
-        if (playerManager.player.recruitTime == 0)
-        {
-            youGotJob.SetActive(true);
-            playerManager.player.job = playerManager.player.chosenJob;
-            playerManager.player.recruitTime = -1;
-        }
+        CheckRecruitTime();
     }
 
     //Check if the wellbeing and hubger value is not above 100
@@ -75,6 +70,16 @@ public class StatsPanel : MonoBehaviour
         {
             playerManager.player.hunger = 10;
             playerManager.player.money -= 100;
+        }
+    }
+
+    void CheckRecruitTime()
+    {
+        if (playerManager.player.recruitTime == 0)
+        {
+            youGotJob.SetActive(true);
+            playerManager.player.job = playerManager.player.chosenJob;
+            playerManager.player.recruitTime = -1;
         }
     }
 

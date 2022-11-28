@@ -18,7 +18,7 @@ public class SkillsPanel : MonoBehaviour
     [SerializeField]
     Slider assemblySlider;
     [SerializeField]
-    Slider rustSlider, networkingSlider, machineLearningSlider, haskelSlider, cyberSecuritySlider, cSlider, workExperienceSlider;
+    Slider rustSlider, networkingSlider, machineLearningSlider, haskelSlider, cyberSecuritySlider, cSlider, workExperienceSlider, knowdledgeSlider;
 
 
     void OnEnable()
@@ -46,6 +46,7 @@ public class SkillsPanel : MonoBehaviour
         cSlider.value = playerManager.player.c;
 
         workExperienceSlider.value = playerManager.player.workExperience;
+        knowdledgeSlider.value = playerManager.player.knowdledge;
     }
 
 }

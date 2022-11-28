@@ -81,7 +81,6 @@ public class WatchTutorial : MonoBehaviour
                 playerManager.player.AddGameHours(hour);
                 playerManager.player.wellbeing -= wellbeing + 5;
             }
-            Debug.Log(hour);
             makingAction.OpenClosePanel(hour);
             panelsManager.OpenTutorialPanel();
 

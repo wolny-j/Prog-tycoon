@@ -138,6 +138,8 @@ public class ActionsPanel : MonoBehaviour
         }
         else if (playerManager.player.jobAbsence == 3)
         {
+            playerManager.player.job = Job.None;
+            playerManager.player.jobAbsence = 0;
             gameObject.SetActive(false);
             lostJobPanel.SetActive(true);
         }
@@ -174,7 +176,6 @@ public class ActionsPanel : MonoBehaviour
                     playerManager.player.wellbeing -= wellbeing + 5;
                     playerManager.player.AddGameHours(time);
                 }
-
             }
         }
     }

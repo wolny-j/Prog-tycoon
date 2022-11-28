@@ -23,5 +23,6 @@ public class PlayerSkills : PlayerTime
     public float networking { get; set; }
     public float haskel { get; set; }
     public float c { get; set; }
+    public float knowdledge { get; set; }
 
 }

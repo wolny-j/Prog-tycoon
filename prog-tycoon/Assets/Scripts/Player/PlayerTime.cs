@@ -70,10 +70,13 @@ public class PlayerTime : PlayerStats
         }
         else
         {
+            CheckAttendance();
+            attendance = 0;
             date.week = Week.Monday;
         }
         if (date.days > 30)
         {
+            CheckUniApply();
             jobAbsence = 0;
             date.days = 1;
             if (date.seasons != Seasons.Winter)
@@ -105,6 +108,13 @@ public class PlayerTime : PlayerStats
         }
         wasAtJob = false;
     }
+    public void CheckUniApply()
+    {
+        if (appliedAtUni == true)
+        {
+            isUniversity = true;
+        }
+    }
 
     //Check if player got recruited to the job
     void CheckRecrutation()
@@ -112,6 +122,15 @@ public class PlayerTime : PlayerStats
         if (recruitTime != 0 && recruitTime > 0)
         {
             recruitTime--;
+        }
+    }
+
+    //Check if player hadd 3 university attendance and punish him if not
+    void CheckAttendance()
+    {
+        if (attendance < 3 && isUniversity)
+        {
+            money -= 100 * (3 - attendance);
         }
     }
 }

@@ -52,7 +52,7 @@ public class MakingAction : MonoBehaviour
     //Used by button to speedup the animation process
     public void SpeedUp()
     {
-        fillTime += 0.003f + (time / (1000 * time));
+        fillTime += 0.005f + (time / (1000 * time));
     }
 
 }

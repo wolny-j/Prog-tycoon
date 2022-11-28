@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class PanelsManager : MonoBehaviour
 {
     [SerializeField] Slider hourSliderSleep;
+    [SerializeField] PlayerManager playerManager;
     [Header("Panels")]
     [SerializeField] GameObject sleepPanel;
-    [SerializeField] GameObject actionsPanel, findJobPanel, shopPanel, inventoryPanel, skillsPanel, tutorialPanel, allButtons, lostJobPanel, gotJobPanel, universityPanel;
+    [SerializeField]
+    GameObject actionsPanel, findJobPanel, shopPanel, inventoryPanel, skillsPanel, tutorialPanel, allButtons,
+     lostJobPanel, gotJobPanel, universityPanel, applyAtUniPanel, studyAtHomePanel;
 
 
     //These functions are used by buttons in game to open/close panels  
@@ -99,13 +102,42 @@ public class PanelsManager : MonoBehaviour
 
     public void OpenUniversityPanel()
     {
-        if (universityPanel.activeSelf)
+        if (playerManager.player.isUniversity)
         {
-            ClosePanel(universityPanel);
+            if (universityPanel.activeSelf)
+            {
+                ClosePanel(universityPanel);
+            }
+            else
+            {
+                OpenPanel(universityPanel);
+            }
         }
         else
         {
-            OpenPanel(universityPanel);
+            OpenApplyUniversityPanel();
+        }
+    }
+    public void OpenStudyAtHomePanel()
+    {
+        if (studyAtHomePanel.activeSelf)
+        {
+            ClosePanel(studyAtHomePanel);
+        }
+        else
+        {
+            OpenPanel(studyAtHomePanel);
+        }
+    }
+    public void OpenApplyUniversityPanel()
+    {
+        if (applyAtUniPanel.activeSelf)
+        {
+            ClosePanel(applyAtUniPanel);
+        }
+        else
+        {
+            OpenPanel(applyAtUniPanel);
         }
     }
     public void CloseYouLostJobPanel()
