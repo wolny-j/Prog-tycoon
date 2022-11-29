@@ -3,34 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Script responsible for managing all panels in game
 public class PanelsManager : MonoBehaviour
 {
-    PlayerManager playerManager;
     [SerializeField] Slider hourSliderSleep;
-    [SerializeField] Text sleepHourText;
-    [SerializeField] GameObject sleepPanel, actionsPanel, findJobPanel, shopPanel, inventoryPanel;
-    int sleepHour;
-    void Start()
-    {
-        playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [SerializeField] PlayerManager playerManager;
+    [Header("Panels")]
+    [SerializeField] GameObject sleepPanel;
+    [SerializeField]
+    GameObject actionsPanel, findJobPanel, shopPanel, inventoryPanel, skillsPanel, tutorialPanel, allButtons,
+     lostJobPanel, gotJobPanel, universityPanel, applyAtUniPanel, studyAtHomePanel;
 
 
+    //These functions are used by buttons in game to open/close panels  
     public void OpenSleepPanel()
     {
         if (sleepPanel.activeSelf)
         {
-            sleepPanel.SetActive(false);
+            ClosePanel(sleepPanel);
         }
         else
         {
-            sleepPanel.SetActive(true);
+            OpenPanel(sleepPanel);
+            //Set a bar in the middle(just for nice design)
             hourSliderSleep.value = 3;
         }
     }
@@ -39,11 +34,23 @@ public class PanelsManager : MonoBehaviour
     {
         if (actionsPanel.activeSelf)
         {
-            actionsPanel.SetActive(false);
+            ClosePanel(actionsPanel);
         }
         else
         {
-            actionsPanel.SetActive(true);
+            OpenPanel(actionsPanel);
+        }
+    }
+
+    public void OpenTutorialPanel()
+    {
+        if (tutorialPanel.activeSelf)
+        {
+            ClosePanel(tutorialPanel);
+        }
+        else
+        {
+            OpenPanel(tutorialPanel);
         }
     }
 
@@ -51,33 +58,108 @@ public class PanelsManager : MonoBehaviour
     {
         if (findJobPanel.activeSelf)
         {
-            findJobPanel.SetActive(false);
+            ClosePanel(findJobPanel);
         }
         else
         {
-            findJobPanel.SetActive(true);
+            OpenPanel(findJobPanel);
         }
     }
     public void OpenShopPanel()
     {
         if (shopPanel.activeSelf)
         {
-            shopPanel.SetActive(false);
+            ClosePanel(shopPanel);
         }
         else
         {
-            shopPanel.SetActive(true);
+            OpenPanel(shopPanel);
         }
     }
     public void OpenInventoryPanel()
     {
         if (inventoryPanel.activeSelf)
         {
-            inventoryPanel.SetActive(false);
+            ClosePanel(inventoryPanel);
         }
         else
         {
-            inventoryPanel.SetActive(true);
+            OpenPanel(inventoryPanel);
         }
+    }
+
+    public void OpenSkillsPanel()
+    {
+        if (skillsPanel.activeSelf)
+        {
+            ClosePanel(skillsPanel);
+        }
+        else
+        {
+            OpenPanel(skillsPanel);
+        }
+    }
+
+    public void OpenUniversityPanel()
+    {
+        if (playerManager.player.isUniversity)
+        {
+            if (universityPanel.activeSelf)
+            {
+                ClosePanel(universityPanel);
+            }
+            else
+            {
+                OpenPanel(universityPanel);
+            }
+        }
+        else
+        {
+            OpenApplyUniversityPanel();
+        }
+    }
+    public void OpenStudyAtHomePanel()
+    {
+        if (studyAtHomePanel.activeSelf)
+        {
+            ClosePanel(studyAtHomePanel);
+        }
+        else
+        {
+            OpenPanel(studyAtHomePanel);
+        }
+    }
+    public void OpenApplyUniversityPanel()
+    {
+        if (applyAtUniPanel.activeSelf)
+        {
+            ClosePanel(applyAtUniPanel);
+        }
+        else
+        {
+            OpenPanel(applyAtUniPanel);
+        }
+    }
+    public void CloseYouLostJobPanel()
+    {
+        ClosePanel(lostJobPanel);
+    }
+
+    public void CloseYouGotJobPanel()
+    {
+        ClosePanel(gotJobPanel);
+    }
+
+    //Functions used by all above for opening and closing panels given in the argument
+    public void ClosePanel(GameObject panel)
+    {
+        allButtons.SetActive(true);
+        panel.SetActive(false);
+    }
+
+    public void OpenPanel(GameObject panel)
+    {
+        allButtons.SetActive(false);
+        panel.SetActive(true);
     }
 }
