@@ -9,7 +9,7 @@ public class StatsPanel : MonoBehaviour
     PlayerManager playerManager;
     [SerializeField] Slider wellbeingsSlider, tirednessSlider, hungerSlider;
     [SerializeField] Text date, time, money, rentDue, day;
-    [SerializeField] GameObject youGotJob;
+    [SerializeField] GameObject youGotJob, appliedAtUni;
 
     //Setup everything at the start of the game
     void Start()
@@ -43,7 +43,8 @@ public class StatsPanel : MonoBehaviour
             time.text = time.text + "0";
         }
         rentDue.text = "Rent payment in: " + (7 - playerManager.player.rentCounter).ToString();
-        CheckRecruitTime();
+        CheckWorkRecrutation();
+        CheckUniversityRecrutation();
     }
 
     //Check if the wellbeing and hubger value is not above 100
@@ -73,13 +74,22 @@ public class StatsPanel : MonoBehaviour
         }
     }
 
-    void CheckRecruitTime()
+    void CheckWorkRecrutation()
     {
         if (playerManager.player.recruitTime == 0)
         {
             youGotJob.SetActive(true);
             playerManager.player.job = playerManager.player.chosenJob;
             playerManager.player.recruitTime = -1;
+        }
+    }
+
+    void CheckUniversityRecrutation()
+    {
+        if (playerManager.player.isApplied)
+        {
+            playerManager.player.isApplied = false;
+            appliedAtUni.SetActive(true);
         }
     }
 

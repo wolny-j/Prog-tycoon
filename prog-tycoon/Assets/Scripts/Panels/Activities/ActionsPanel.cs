@@ -10,7 +10,7 @@ public class ActionsPanel : MonoBehaviour
     MakingAction makingAction;
     PanelsManager panelsManager;
     [SerializeField] Text jobDesctiption, buttonText;
-    [SerializeField] GameObject actionAnimation, watchTutorialPanel, absence1, absence2, absence3, lostJobPanel;
+    [SerializeField] GameObject actionAnimation, watchTutorialPanel, absence1, absence2, absence3, lostJobPanel, jobButton;
 
     //Setup everything each time the panel is set to active
     void OnEnable()
@@ -70,10 +70,11 @@ public class ActionsPanel : MonoBehaviour
     void SetUpPanel()
     {
         CheckAbsence();
+        jobButton.SetActive(true);
         switch (playerManager.player.job)
         {
             case Job.None:
-                SetDescription("", "Unavailable");
+                jobButton.SetActive(false);
                 break;
             case Job.McDonald:
                 SetDescription("Time: 9h, Reward: 80$/day, Cost: 65 energy, 20 wellbeing", "McDonald");

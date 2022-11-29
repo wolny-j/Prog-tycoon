@@ -76,7 +76,6 @@ public class PlayerTime : PlayerStats
         }
         if (date.days > 30)
         {
-            CheckUniApply();
             jobAbsence = 0;
             date.days = 1;
             if (date.seasons != Seasons.Winter)
@@ -87,6 +86,10 @@ public class PlayerTime : PlayerStats
             {
                 date.seasons = Seasons.Spring;
             }
+        }
+        if (date.days < 7 && date.week == Week.Monday)
+        {
+            CheckUniApply();
         }
     }
 
@@ -112,7 +115,7 @@ public class PlayerTime : PlayerStats
     {
         if (appliedAtUni == true)
         {
-            isUniversity = true;
+            isApplied = true;
         }
     }
 

@@ -151,13 +151,13 @@ public class PanelsManager : MonoBehaviour
     }
 
     //Functions used by all above for opening and closing panels given in the argument
-    void ClosePanel(GameObject panel)
+    public void ClosePanel(GameObject panel)
     {
         allButtons.SetActive(true);
         panel.SetActive(false);
     }
 
-    void OpenPanel(GameObject panel)
+    public void OpenPanel(GameObject panel)
     {
         allButtons.SetActive(false);
         panel.SetActive(true);

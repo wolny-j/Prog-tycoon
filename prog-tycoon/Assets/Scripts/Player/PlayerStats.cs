@@ -19,6 +19,7 @@ public class PlayerStats
     public Job chosenJob { get; set; }
     public bool appliedAtUni { get; set; }
     public bool isUniversity { get; set; }
+    public bool isApplied { get; set; }
     public int attendance { get; set; }
     public int examDue { get; set; }
 

@@ -36,3 +36,8 @@ public struct GameCallendar
     public Seasons seasons;
     public int years;
 }
+
+public struct University
+{
+    
+}

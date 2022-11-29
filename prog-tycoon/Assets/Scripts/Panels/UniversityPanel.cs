@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UniversityPanel : MonoBehaviour
 {
     [SerializeField] PlayerManager playerManager;
     [SerializeField] PanelsManager panelsManager;
     [SerializeField] MakingAction makingAction;
-    [SerializeField] GameObject tick1, tick2, tick3;
+    [SerializeField] GameObject tick1, tick2, tick3, examToday, daysToExamGameObject;
+    [SerializeField] Text daysToExam;
 
     void OnEnable()
     {
+        daysToExam.text = (30 - playerManager.player.date.days).ToString();
         switch (playerManager.player.attendance)
         {
             case 0:
@@ -25,10 +28,16 @@ public class UniversityPanel : MonoBehaviour
                 tick3.SetActive(true);
                 break;
         }
-    }
-    public void ApplyAtUniversity()
-    {
-        playerManager.player.appliedAtUni = true;
+        if (playerManager.player.date.days == 30)
+        {
+            daysToExamGameObject.SetActive(false);
+            examToday.SetActive(true);
+        }
+        else
+        {
+            daysToExamGameObject.SetActive(true);
+            examToday.SetActive(false);
+        }
     }
 
     public void GoToUiversity()
