@@ -6,6 +6,7 @@ public class LightManager : MonoBehaviour
 {
     [SerializeField] Light mainLight, lampLight;
     [SerializeField] PlayerManager playerManager;
+    
 
     void Update()
     {

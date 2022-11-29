@@ -6,6 +6,7 @@ using UnityEngine;
 public class ShopPanel : MonoBehaviour
 {
     [SerializeField] PlayerManager playerManager;
+    [SerializeField] GameObject bottle1, bottle2, bottle3, bottle4, bottle5, bottle6, bottle7, bottle8, bottle9, bottle10, bottle11, bottle12;
 
 
     //Functions used by the buttons to buy items from the shop panel
@@ -23,6 +24,45 @@ public class ShopPanel : MonoBehaviour
         {
             playerManager.player.water++;
             playerManager.player.money -= 7;
+            switch (playerManager.player.water)
+            {
+                case 1:
+                    bottle1.SetActive(true);
+                    break;
+                case 2:
+                    bottle2.SetActive(true);
+                    break;
+                case 3:
+                    bottle3.SetActive(true);
+                    break;
+                case 4:
+                    bottle4.SetActive(true);
+                    break;
+                case 5:
+                    bottle5.SetActive(true);
+                    break;
+                case 6:
+                    bottle6.SetActive(true);
+                    break;
+                case 7:
+                    bottle7.SetActive(true);
+                    break;
+                case 8:
+                    bottle8.SetActive(true);
+                    break;
+                case 9:
+                    bottle9.SetActive(true);
+                    break;
+                case 10:
+                    bottle10.SetActive(true);
+                    break;
+                case 11:
+                    bottle11.SetActive(true);
+                    break;
+                case 12:
+                    bottle12.SetActive(true);
+                    break;
+            }
         }
     }
     public void OrderBurger()
