@@ -54,7 +54,7 @@ public class MakingAction : MonoBehaviour
     {
         if (time >= 4)
         {
-            fillTime += 0.008f + (time / (100 * time * time * time * time));
+            fillTime += 0.01f + (time / (100 * time * time * time * time));
         }
         else
         {

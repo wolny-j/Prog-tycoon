@@ -6,7 +6,13 @@ using UnityEngine;
 public class ShopPanel : MonoBehaviour
 {
     [SerializeField] PlayerManager playerManager;
-    [SerializeField] GameObject bottle1, bottle2, bottle3, bottle4, bottle5, bottle6, bottle7, bottle8, bottle9, bottle10, bottle11, bottle12;
+    [Header("Bottles")]
+    [SerializeField] GameObject bottle1;
+    [SerializeField] GameObject bottle2, bottle3, bottle4, bottle5, bottle6, bottle7, bottle8, bottle9, bottle10, bottle11, bottle12;
+
+    [Header("Energy Drinks")]
+    [SerializeField] GameObject energyDrink1;
+    [SerializeField] GameObject energyDrink2, energyDrink3, energyDrink4, energyDrink5, energyDrink6;
 
 
     //Functions used by the buttons to buy items from the shop panel
@@ -16,6 +22,27 @@ public class ShopPanel : MonoBehaviour
         {
             playerManager.player.energyDrink++;
             playerManager.player.money -= 8;
+            switch (playerManager.player.energyDrink)
+            {
+                case 1:
+                    energyDrink1.SetActive(true);
+                    break;
+                case 2:
+                    energyDrink2.SetActive(true);
+                    break;
+                case 3:
+                    energyDrink3.SetActive(true);
+                    break;
+                case 4:
+                    energyDrink4.SetActive(true);
+                    break;
+                case 5:
+                    energyDrink5.SetActive(true);
+                    break;
+                case 6:
+                    energyDrink6.SetActive(true);
+                    break;
+            }
         }
     }
     public void BuyWaterBottle()
