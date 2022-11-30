@@ -49,7 +49,7 @@ public class GoSleepPanel : MonoBehaviour
                     playerManager.player.wellbeing += 10;
                 }
             }
-            makingAction.OpenClosePanel(1);
+            //makingAction.OpenClosePanel(1);
             playerManager.player.SetGameHours(sleepHour, true);
 
             sleepHour = 0;

@@ -8,12 +8,35 @@ public class InventoryPanel : MonoBehaviour
 {
     PlayerManager playerManager;
     [SerializeField] Text energyDrink, water;
-    [SerializeField] GameObject bottle1, bottle2, bottle3, bottle4, bottle5, bottle6, bottle7, bottle8, bottle9, bottle10, bottle11, bottle12;
+    [SerializeField] GameObject bottleUI, energyDrinkUI;
+    [Header("Bottles")]
+    [SerializeField] GameObject bottle1;
+    [SerializeField] GameObject bottle2, bottle3, bottle4, bottle5, bottle6, bottle7, bottle8, bottle9, bottle10, bottle11, bottle12;
+    [Header("Energy Drinks")]
+    [SerializeField] GameObject energyDrink1;
+    [SerializeField] GameObject energyDrink2, energyDrink3, energyDrink4, energyDrink5, energyDrink6;
 
     void OnEnable()
     {
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
         UpdateItems();
+
+        if (playerManager.player.energyDrink < 1)
+        {
+            energyDrinkUI.SetActive(false);
+        }
+        else
+        {
+            energyDrinkUI.SetActive(true);
+        }
+        if (playerManager.player.water < 1)
+        {
+            bottleUI.SetActive(false);
+        }
+        else
+        {
+            bottleUI.SetActive(true);
+        }
     }
 
     //Functions used by the buttons in the panel. 
@@ -26,6 +49,27 @@ public class InventoryPanel : MonoBehaviour
             playerManager.player.wellbeing -= (10 + (playerManager.player.energyDrinkUsage * 5));
             playerManager.player.energyDrink--;
             energyDrink.text = playerManager.player.energyDrink.ToString();
+            switch (playerManager.player.energyDrink)
+            {
+                case 0:
+                    energyDrink1.SetActive(false);
+                    break;
+                case 1:
+                    energyDrink2.SetActive(false);
+                    break;
+                case 2:
+                    energyDrink3.SetActive(false);
+                    break;
+                case 3:
+                    energyDrink4.SetActive(false);
+                    break;
+                case 4:
+                    energyDrink5.SetActive(false);
+                    break;
+                case 5:
+                    energyDrink6.SetActive(false);
+                    break;
+            }
         }
     }
     public void UseWater()
