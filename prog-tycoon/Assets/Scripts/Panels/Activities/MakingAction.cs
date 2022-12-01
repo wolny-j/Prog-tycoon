@@ -14,6 +14,10 @@ public class MakingAction : MonoBehaviour
     float fillTime;
     float time = 3;
 
+    [Header("TableItems")]
+    [SerializeField] GameObject tableEnergyDrink;
+    [SerializeField] GameObject tableCoffeeCup, tableBottle;
+
     //If the bar is opened animate it, the speed depends on the activity time 
     void Update()
     {
@@ -24,6 +28,7 @@ public class MakingAction : MonoBehaviour
 
             if (timerSlider.value == timerSlider.maxValue)
             {
+                DisableAllTableItems();
                 OpenClosePanel(1);
             }
         }
@@ -59,6 +64,18 @@ public class MakingAction : MonoBehaviour
         else
         {
             fillTime += 0.01f + (time / (100 * time * time));
+        }
+    }
+
+    void DisableAllTableItems()
+    {
+        foreach (GameObject item in playerManager.player.tableItems)
+        {
+            GameObject.Destroy(item);
+        }
+        for (int i = 0; i < playerManager.player.isSpawnPointTaken.Length; i++)
+        {
+            playerManager.player.isSpawnPointTaken[i] = false;
         }
     }
 

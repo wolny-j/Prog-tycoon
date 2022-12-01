@@ -14,6 +14,8 @@ public class ShopPanel : MonoBehaviour
     [SerializeField] GameObject energyDrink1;
     [SerializeField] GameObject energyDrink2, energyDrink3, energyDrink4, energyDrink5, energyDrink6;
 
+    [SerializeField] GameObject tableCoffeeCup, tableSandwich, spawnpoint1, spawnpoint2, spawnpoint3, spawnpoint4;
+
 
     //Functions used by the buttons to buy items from the shop panel
     public void BuyEnergyDrink()
@@ -108,6 +110,52 @@ public class ShopPanel : MonoBehaviour
             playerManager.player.SetGameMinutes(15);
             playerManager.player.hunger += 18;
             playerManager.player.money -= 15;
+            SpawnItem(tableSandwich, new Vector3(-90, 0, 0));
+
+        }
+    }
+    public void BuyCoffee()
+    {
+        if (playerManager.player.money >= 15)
+        {
+            playerManager.player.coffeeUsage++;
+            playerManager.player.energy += 20;
+            playerManager.player.wellbeing -= (10 + (playerManager.player.coffeeUsage * 3));
+            playerManager.player.money -= 15;
+            SpawnItem(tableCoffeeCup, new Vector3(-90, 180, 144.827f));
+
+        }
+    }
+
+    void SpawnItem(GameObject item, Vector3 rotation)
+    {
+        if (playerManager.player.isSpawnPointTaken[0] == false)
+        {
+            playerManager.player.tableItems[0] = Instantiate(item, new Vector3(spawnpoint1.transform.position.x, item.transform.position.y, spawnpoint1.transform.position.z), Quaternion.identity);
+            playerManager.player.tableItems[0].SetActive(true);
+            playerManager.player.tableItems[0].transform.Rotate(rotation);
+            playerManager.player.isSpawnPointTaken[0] = true;
+        }
+        else if (playerManager.player.isSpawnPointTaken[1] == false)
+        {
+            playerManager.player.tableItems[1] = Instantiate(item, new Vector3(spawnpoint2.transform.position.x, item.transform.position.y, spawnpoint2.transform.position.z), Quaternion.identity);
+            playerManager.player.tableItems[1].SetActive(true);
+            playerManager.player.tableItems[1].transform.Rotate(rotation);
+            playerManager.player.isSpawnPointTaken[1] = true;
+        }
+        else if (playerManager.player.isSpawnPointTaken[2] == false)
+        {
+            playerManager.player.tableItems[2] = Instantiate(item, new Vector3(spawnpoint3.transform.position.x, item.transform.position.y, spawnpoint3.transform.position.z), Quaternion.identity);
+            playerManager.player.tableItems[2].SetActive(true);
+            playerManager.player.tableItems[2].transform.Rotate(rotation);
+            playerManager.player.isSpawnPointTaken[2] = true;
+        }
+        else if (playerManager.player.isSpawnPointTaken[3] == false)
+        {
+            playerManager.player.tableItems[3] = Instantiate(item, new Vector3(spawnpoint4.transform.position.x, item.transform.position.y, spawnpoint4.transform.position.z), Quaternion.identity);
+            playerManager.player.tableItems[3].SetActive(true);
+            playerManager.player.tableItems[3].transform.Rotate(rotation);
+            playerManager.player.isSpawnPointTaken[3] = true;
         }
     }
 }

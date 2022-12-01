@@ -7,7 +7,10 @@ public class PlayerInventory : PlayerSkills
 {
     public int energyDrink { get; set; }
     public int energyDrinkUsage { get; set; }
+    public int coffeeUsage { get; set; }
     public int water { get; set; }
+    public bool[] isSpawnPointTaken = new bool[4];
+    public GameObject[] tableItems = new GameObject[4];
 
 
 }

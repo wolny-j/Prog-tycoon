@@ -54,6 +54,7 @@ public class GoSleepPanel : MonoBehaviour
 
             sleepHour = 0;
             playerManager.player.energyDrinkUsage = 0;
+            playerManager.player.coffeeUsage = 0;
             playerManager.player.hunger -= 20;
             panelsManager.OpenSleepPanel();
 
