@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script responsible for studying 
 public class StudyAtHomePanel : MonoBehaviour
 {
     [SerializeField] PlayerManager playerManager;
     [SerializeField] PanelsManager panelsManager;
     [SerializeField] MakingAction makingAction;
+
+    //All these functions are used by the buttons for studying a certain subject 
 
     public void StudyAssembly()
     {
@@ -36,6 +39,8 @@ public class StudyAtHomePanel : MonoBehaviour
     {
         Study(playerManager.player.c, 2, 15, 35, 4, 0);
     }
+
+    //Perform action by given arguments
     float Study(float temp, float skill, float wellbeing, float energy, int hour, int minute)
     {
         if (playerManager.player.energy >= energy)

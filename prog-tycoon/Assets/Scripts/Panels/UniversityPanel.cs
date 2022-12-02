@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Script responsible for all university mechanics
 public class UniversityPanel : MonoBehaviour
 {
     [SerializeField] PlayerManager playerManager;
@@ -11,6 +12,7 @@ public class UniversityPanel : MonoBehaviour
     [SerializeField] GameObject tick1, tick2, tick3, examToday, daysToExamGameObject;
     [SerializeField] Text daysToExam;
 
+    //Setup all panels
     void OnEnable()
     {
         daysToExam.text = (30 - playerManager.player.date.days).ToString();
@@ -40,6 +42,7 @@ public class UniversityPanel : MonoBehaviour
         }
     }
 
+    //Perform go to university action and give all rewards for it
     public void GoToUiversity()
     {
         if (playerManager.player.energy >= 50 && playerManager.player.attendance < 3)
@@ -79,6 +82,7 @@ public class UniversityPanel : MonoBehaviour
         }
     }
 
+    //Open study at home panel
     public void StudyAtHome()
     {
         panelsManager.OpenUniversityPanel();

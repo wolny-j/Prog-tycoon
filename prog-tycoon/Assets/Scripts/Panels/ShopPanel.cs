@@ -22,76 +22,22 @@ public class ShopPanel : MonoBehaviour
     {
         if (playerManager.player.money >= 8)
         {
+            GameObject[] energyDrinks = { energyDrink1, energyDrink2, energyDrink3, energyDrink4, energyDrink5, energyDrink6 };
             playerManager.player.energyDrink++;
             playerManager.player.money -= 8;
-            switch (playerManager.player.energyDrink)
-            {
-                case 1:
-                    energyDrink1.SetActive(true);
-                    break;
-                case 2:
-                    energyDrink2.SetActive(true);
-                    break;
-                case 3:
-                    energyDrink3.SetActive(true);
-                    break;
-                case 4:
-                    energyDrink4.SetActive(true);
-                    break;
-                case 5:
-                    energyDrink5.SetActive(true);
-                    break;
-                case 6:
-                    energyDrink6.SetActive(true);
-                    break;
-            }
+
+            ShowItemInFridge(energyDrinks, playerManager.player.energyDrink);
         }
     }
     public void BuyWaterBottle()
     {
         if (playerManager.player.money >= 7)
         {
+            GameObject[] waterBottles = { bottle1, bottle2, bottle3, bottle4, bottle5, bottle6, bottle7, bottle8, bottle9, bottle10, bottle11, bottle12 };
             playerManager.player.water++;
             playerManager.player.money -= 7;
-            switch (playerManager.player.water)
-            {
-                case 1:
-                    bottle1.SetActive(true);
-                    break;
-                case 2:
-                    bottle2.SetActive(true);
-                    break;
-                case 3:
-                    bottle3.SetActive(true);
-                    break;
-                case 4:
-                    bottle4.SetActive(true);
-                    break;
-                case 5:
-                    bottle5.SetActive(true);
-                    break;
-                case 6:
-                    bottle6.SetActive(true);
-                    break;
-                case 7:
-                    bottle7.SetActive(true);
-                    break;
-                case 8:
-                    bottle8.SetActive(true);
-                    break;
-                case 9:
-                    bottle9.SetActive(true);
-                    break;
-                case 10:
-                    bottle10.SetActive(true);
-                    break;
-                case 11:
-                    bottle11.SetActive(true);
-                    break;
-                case 12:
-                    bottle12.SetActive(true);
-                    break;
-            }
+            ShowItemInFridge(waterBottles, playerManager.player.water);
+
         }
     }
     public void OrderBurger()
@@ -110,7 +56,7 @@ public class ShopPanel : MonoBehaviour
             playerManager.player.SetGameMinutes(15);
             playerManager.player.hunger += 18;
             playerManager.player.money -= 15;
-            SpawnItem(tableSandwich, new Vector3(-90, 0, 0));
+            SpawnItemOnTable(tableSandwich, new Vector3(-90, 0, 0));
 
         }
     }
@@ -122,40 +68,40 @@ public class ShopPanel : MonoBehaviour
             playerManager.player.energy += 20;
             playerManager.player.wellbeing -= (10 + (playerManager.player.coffeeUsage * 3));
             playerManager.player.money -= 15;
-            SpawnItem(tableCoffeeCup, new Vector3(-90, 180, 144.827f));
+            SpawnItemOnTable(tableCoffeeCup, new Vector3(-90, 180, 144.827f));
 
         }
     }
 
-    void SpawnItem(GameObject item, Vector3 rotation)
+    //Show the item in the fridge when it was bought
+    void ShowItemInFridge(GameObject[] items, int numberOf)
     {
-        if (playerManager.player.isSpawnPointTaken[0] == false)
+        for (int i = 0; i < items.Length; i++)
         {
-            playerManager.player.tableItems[0] = Instantiate(item, new Vector3(spawnpoint1.transform.position.x, item.transform.position.y, spawnpoint1.transform.position.z), Quaternion.identity);
-            playerManager.player.tableItems[0].SetActive(true);
-            playerManager.player.tableItems[0].transform.Rotate(rotation);
-            playerManager.player.isSpawnPointTaken[0] = true;
+            if (numberOf == i + 1)
+            {
+                items[i].SetActive(true);
+            }
         }
-        else if (playerManager.player.isSpawnPointTaken[1] == false)
+    }
+
+    
+    //Spawn item on the table when player buys it
+    void SpawnItemOnTable(GameObject item, Vector3 rotation)
+    {
+        GameObject[] spawnpoints = { spawnpoint1, spawnpoint2, spawnpoint3, spawnpoint4 };
+
+        for (int i = 0; i < spawnpoints.Length; i++)
         {
-            playerManager.player.tableItems[1] = Instantiate(item, new Vector3(spawnpoint2.transform.position.x, item.transform.position.y, spawnpoint2.transform.position.z), Quaternion.identity);
-            playerManager.player.tableItems[1].SetActive(true);
-            playerManager.player.tableItems[1].transform.Rotate(rotation);
-            playerManager.player.isSpawnPointTaken[1] = true;
-        }
-        else if (playerManager.player.isSpawnPointTaken[2] == false)
-        {
-            playerManager.player.tableItems[2] = Instantiate(item, new Vector3(spawnpoint3.transform.position.x, item.transform.position.y, spawnpoint3.transform.position.z), Quaternion.identity);
-            playerManager.player.tableItems[2].SetActive(true);
-            playerManager.player.tableItems[2].transform.Rotate(rotation);
-            playerManager.player.isSpawnPointTaken[2] = true;
-        }
-        else if (playerManager.player.isSpawnPointTaken[3] == false)
-        {
-            playerManager.player.tableItems[3] = Instantiate(item, new Vector3(spawnpoint4.transform.position.x, item.transform.position.y, spawnpoint4.transform.position.z), Quaternion.identity);
-            playerManager.player.tableItems[3].SetActive(true);
-            playerManager.player.tableItems[3].transform.Rotate(rotation);
-            playerManager.player.isSpawnPointTaken[3] = true;
+            if (playerManager.player.isSpawnPointTaken[i] == false)
+            {
+                playerManager.player.tableItems[i] = Instantiate(item, new Vector3(spawnpoints[i].transform.position.x, item.transform.position.y, spawnpoints[i].transform.position.z), Quaternion.identity);
+                playerManager.player.tableItems[i].SetActive(true);
+                playerManager.player.tableItems[i].transform.Rotate(rotation);
+                playerManager.player.isSpawnPointTaken[i] = true;
+
+                break;
+            }
         }
     }
 }

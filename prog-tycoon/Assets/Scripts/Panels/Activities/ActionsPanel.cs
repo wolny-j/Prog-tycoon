@@ -47,7 +47,7 @@ public class ActionsPanel : MonoBehaviour
             playerManager.player.energy -= 10;
             playerManager.player.SetGameMinutes(30);
             playerManager.player.AddGameHours(1);
-            playerManager.player.wellbeing += 5;
+            playerManager.player.wellbeing += 10;
         }
     }
 

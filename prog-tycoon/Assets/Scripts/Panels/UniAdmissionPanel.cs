@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script responsible for accepting and rejecting university admission  
 public class UniAdmissionPanel : MonoBehaviour
 {
     [SerializeField] PlayerManager playerManager;

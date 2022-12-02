@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script responsible for all in game lightning control
 public class LightManager : MonoBehaviour
 {
     [SerializeField] Light mainLight, lampLight;
     [SerializeField] PlayerManager playerManager;
-    
 
+
+    //Change the lightning to night when time will reach 6pm
     void Update()
     {
         if (playerManager.player.time.hours > 18 || playerManager.player.time.hours < 6)
