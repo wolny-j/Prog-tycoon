@@ -11,6 +11,7 @@ public class PlayerInventory : PlayerSkills
     public int water { get; set; }
     public bool[] isSpawnPointTaken = new bool[4];
     public GameObject[] tableItems = new GameObject[4];
+    public bool gamingConsole { get; set; }
 
 
 }

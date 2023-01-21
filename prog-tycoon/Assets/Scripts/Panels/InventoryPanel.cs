@@ -40,7 +40,6 @@ public class InventoryPanel : MonoBehaviour
             DisappearItemsFromTheFridge(energyDrinks, playerManager.player.energyDrink);
             SpawnItemOnTable(tableEnergyDrink, new Vector3(-90, -180, 86.312f));
         }
-
     }
 
     public void UseWater()

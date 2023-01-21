@@ -10,7 +10,7 @@ public class ActionsPanel : MonoBehaviour
     MakingAction makingAction;
     PanelsManager panelsManager;
     [SerializeField] Text jobDesctiption, buttonText;
-    [SerializeField] GameObject actionAnimation, watchTutorialPanel, absence1, absence2, absence3, lostJobPanel, jobButton;
+    [SerializeField] GameObject actionAnimation, watchTutorialPanel, absence1, absence2, absence3, lostJobPanel, jobButton, playConsoleButton;
 
     //Setup everything each time the panel is set to active
     void OnEnable()
@@ -45,8 +45,8 @@ public class ActionsPanel : MonoBehaviour
             panelsManager.OpenActionsPanel();
             makingAction.OpenClosePanel(1);
             playerManager.player.energy -= 10;
-            playerManager.player.SetGameMinutes(30);
-            playerManager.player.AddGameHours(1);
+            playerManager.player.SetGameMinutes(0);
+            playerManager.player.AddGameHours(2);
             playerManager.player.wellbeing += 10;
         }
     }
@@ -60,8 +60,21 @@ public class ActionsPanel : MonoBehaviour
             playerManager.player.energy -= 35;
             playerManager.player.SetGameMinutes(0);
             playerManager.player.AddGameHours(4);
-            playerManager.player.wellbeing += 30;
+            playerManager.player.wellbeing += 35;
             playerManager.player.money -= 25;
+        }
+    }
+
+    public void PlayConsole()
+    {
+        if (playerManager.player.energy >= 15)
+        {
+            panelsManager.OpenActionsPanel();
+            makingAction.OpenClosePanel(3);
+            playerManager.player.energy -= 15;
+            playerManager.player.SetGameMinutes(0);
+            playerManager.player.AddGameHours(3);
+            playerManager.player.wellbeing += 15;
         }
     }
 
@@ -91,6 +104,16 @@ public class ActionsPanel : MonoBehaviour
             default:
                 Debug.Log("Unknown job error");
                 break;
+        }
+        Debug.Log(playerManager.player.gamingConsole);
+        if (!playerManager.player.gamingConsole)
+        {
+            playConsoleButton.SetActive(false);
+        }
+        else
+        {
+            playConsoleButton.SetActive(true);
+
         }
     }
 

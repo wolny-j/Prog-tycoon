@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     //Create player object
-    public Player player = new Player("Loerm Ipsum", 350f);
+    public Player player = new Player("Loerm Ipsum", 450f);
     void Update()
     {
         InputTestValues();

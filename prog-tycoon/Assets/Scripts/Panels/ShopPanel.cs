@@ -14,7 +14,7 @@ public class ShopPanel : MonoBehaviour
     [SerializeField] GameObject energyDrink1;
     [SerializeField] GameObject energyDrink2, energyDrink3, energyDrink4, energyDrink5, energyDrink6;
 
-    [SerializeField] GameObject tableCoffeeCup, tableSandwich, spawnpoint1, spawnpoint2, spawnpoint3, spawnpoint4;
+    [SerializeField] GameObject tableCoffeeCup, tableSandwich, spawnpoint1, spawnpoint2, spawnpoint3, spawnpoint4, gamingConsole;
 
 
     //Functions used by the buttons to buy items from the shop panel
@@ -72,6 +72,15 @@ public class ShopPanel : MonoBehaviour
 
         }
     }
+    public void BuyConsole()
+    {
+        if (playerManager.player.money >= 400)
+        {
+            playerManager.player.gamingConsole = true;
+            playerManager.player.money -= 400;
+            gamingConsole.SetActive(true);
+        }
+    }
 
     //Show the item in the fridge when it was bought
     void ShowItemInFridge(GameObject[] items, int numberOf)
@@ -85,7 +94,7 @@ public class ShopPanel : MonoBehaviour
         }
     }
 
-    
+
     //Spawn item on the table when player buys it
     void SpawnItemOnTable(GameObject item, Vector3 rotation)
     {
