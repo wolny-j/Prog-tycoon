@@ -15,8 +15,8 @@ public class MakingAction : MonoBehaviour
     float time = 3;
 
     [Header("TableItems")]
-    [SerializeField] GameObject tableEnergyDrink;
-    [SerializeField] GameObject tableCoffeeCup, tableBottle;
+    [SerializeField] GameObject zeroAnim;
+    [SerializeField] GameObject oneAnim;
 
     //If the bar is opened animate it, the speed depends on the activity time 
     void Update()
@@ -24,7 +24,7 @@ public class MakingAction : MonoBehaviour
         if (isAnim)
         {
             timerSlider.value = Mathf.Lerp(timerSlider.minValue, timerSlider.maxValue, fillTime);
-            fillTime += 0.5f * (0.05f / time) * Time.deltaTime;
+            fillTime += 0.5f * (0.08f / time) * Time.deltaTime;
 
             if (timerSlider.value == timerSlider.maxValue)
             {
@@ -57,13 +57,23 @@ public class MakingAction : MonoBehaviour
     //Used by button to speedup the animation process
     public void SpeedUp()
     {
+
+        if (!zeroAnim.activeSelf)
+        {
+            StartCoroutine(AnimateCoding(zeroAnim));
+        }
+        else if (!oneAnim.activeSelf)
+        {
+            StartCoroutine(AnimateCoding(oneAnim));
+        }
+
         if (time >= 4)
         {
-            fillTime += 0.01f + (time / (100 * time * time * time * time));
+            fillTime += 0.015f + (time / (100 * time * time * time * time));
         }
         else
         {
-            fillTime += 0.01f + (time / (100 * time * time));
+            fillTime += 0.015f + (time / (100 * time * time));
         }
     }
 
@@ -77,6 +87,14 @@ public class MakingAction : MonoBehaviour
         {
             playerManager.player.isSpawnPointTaken[i] = false;
         }
+    }
+
+    IEnumerator AnimateCoding(GameObject obj)
+    {
+        yield return new WaitForSeconds(0.5f);
+        obj.SetActive(true);
+        yield return new WaitForSeconds(2);
+        obj.SetActive(false);
     }
 
 }

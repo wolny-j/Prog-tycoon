@@ -6,15 +6,14 @@ using UnityEngine;
 public class ShopPanel : MonoBehaviour
 {
     [SerializeField] PlayerManager playerManager;
-    [Header("Bottles")]
-    [SerializeField] GameObject bottle1;
-    [SerializeField] GameObject bottle2, bottle3, bottle4, bottle5, bottle6, bottle7, bottle8, bottle9, bottle10, bottle11, bottle12;
+    [SerializeField] List<GameObject> waterBottles;
+    [SerializeField] List<GameObject> energyDrinks;
+    [Header("Other items")]
+    [SerializeField] GameObject tableCoffeeCup;
+    [SerializeField] GameObject tableSandwich, gamingConsole;
+    [Header("Spawnpoints")]
+    [SerializeField] List<GameObject> spawnpoints;
 
-    [Header("Energy Drinks")]
-    [SerializeField] GameObject energyDrink1;
-    [SerializeField] GameObject energyDrink2, energyDrink3, energyDrink4, energyDrink5, energyDrink6;
-
-    [SerializeField] GameObject tableCoffeeCup, tableSandwich, spawnpoint1, spawnpoint2, spawnpoint3, spawnpoint4, gamingConsole;
 
 
     //Functions used by the buttons to buy items from the shop panel
@@ -22,7 +21,6 @@ public class ShopPanel : MonoBehaviour
     {
         if (playerManager.player.money >= 8)
         {
-            GameObject[] energyDrinks = { energyDrink1, energyDrink2, energyDrink3, energyDrink4, energyDrink5, energyDrink6 };
             playerManager.player.energyDrink++;
             playerManager.player.money -= 8;
 
@@ -33,7 +31,7 @@ public class ShopPanel : MonoBehaviour
     {
         if (playerManager.player.money >= 7)
         {
-            GameObject[] waterBottles = { bottle1, bottle2, bottle3, bottle4, bottle5, bottle6, bottle7, bottle8, bottle9, bottle10, bottle11, bottle12 };
+
             playerManager.player.water++;
             playerManager.player.money -= 7;
             ShowItemInFridge(waterBottles, playerManager.player.water);
@@ -83,9 +81,9 @@ public class ShopPanel : MonoBehaviour
     }
 
     //Show the item in the fridge when it was bought
-    void ShowItemInFridge(GameObject[] items, int numberOf)
+    void ShowItemInFridge(List<GameObject> items, int numberOf)
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.Count; i++)
         {
             if (numberOf == i + 1)
             {
@@ -98,9 +96,7 @@ public class ShopPanel : MonoBehaviour
     //Spawn item on the table when player buys it
     void SpawnItemOnTable(GameObject item, Vector3 rotation)
     {
-        GameObject[] spawnpoints = { spawnpoint1, spawnpoint2, spawnpoint3, spawnpoint4 };
-
-        for (int i = 0; i < spawnpoints.Length; i++)
+        for (int i = 0; i < spawnpoints.Count; i++)
         {
             if (playerManager.player.isSpawnPointTaken[i] == false)
             {
